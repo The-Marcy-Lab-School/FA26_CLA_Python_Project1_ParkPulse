@@ -1,28 +1,26 @@
-## ParkPulse Template
+# ParkPulse — Week 1 Starter
 
-This repository is the starting point for the ParkPulse project.
+> This README is for Week 1 instructions only.
+>
+> Do **not** merge this README into `main`.
+>
+> Your final `main` branch will eventually contain one complete ParkPulse
+> README covering the entire Weeks 1–4 project.
 
-You will create your own repository from this template and work from the branch assigned for the current week.
+## Project Context
 
-## 1. Create your own repository
+ParkPulse is a command-line tool for monitoring amusement park attraction
+capacity and status.
 
-On GitHub:
+Across Weeks 1–4, you will build the project incrementally.
 
-1. Click **Use this template**.
-2. Choose **Create a new repository**.
-3. Name your repository `parkpulse`.
-4. Make sure the repository is owned by your GitHub account.
-5. Create the repository.
+## What Has Already Been Built
 
-**Do not fork this repository.**
+The repository structure has already been created for you.
 
-## 2. Clone your new repository
+You should already have:
 
-Copy the URL for the repository you just created.
-
-Then run:
-
-```bash
-git clone <your-repository-url>
-cd parkpulse
-```
+```text
+README.md
+.gitignore
+src/
