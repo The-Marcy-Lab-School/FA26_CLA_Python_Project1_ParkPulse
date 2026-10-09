@@ -1,331 +1,243 @@
-# ParkPulse — Week 2: Functions, Scope & Decisions
+# ParkPulse — Week 3: Loops, Strings & Interactive Input
 
-**Project:** ParkPulse  
-**Branch:** `Week_2`
+**Branch:** `Week_3`  
+**Project:** ParkPulse
 
 ## Overview
 
-Last week, you built the foundation of ParkPulse using variables, data types, expressions, and operators to calculate ride capacity/utilization and display formatted attraction status.
+In Weeks 1–2, you built the foundation of ParkPulse, calculated ride capacity/utilization, and introduced reusable functions for eligibility, pricing, and capacity rules.
 
-Your completed Week 1 Python application should already be integrated into your personal repository's `main` branch.
+Your completed Week 2 application file should already be integrated into your personal repository's `main` branch.
 
-**This week, you will refactor and extend ParkPulse using functions and conditional logic.**
+**This week:** Make ParkPulse interactive by adding loops, user input, validation, and readable attraction summaries.
 
-### Week 2 Goals
+## 1. Get Your Week 3 Starter
 
-By the end of this week, you will:
+Your instructor has published the `Week_3` starter branch in the school repository.
 
-- Create reusable functions with parameters, arguments, docstrings, and return values.
-- Trace function calls and explain local versus global scope.
-- Use `if`, `elif`, `else`, and guard clauses to make decisions.
-- Apply eligibility, ticket pricing, and capacity rules to ParkPulse.
-- Predict and test edge cases.
+Open your existing personal ParkPulse repository in VS Code.
 
----
+First, ensure your Week 2 work is committed and your working tree is clean.
 
-## 1. Get Your Week 2 Starter From GitHub
-
-Your instructor has published the Week 2 starter code and practice activities on the school repository's `Week_2` branch.
-
-You will fetch the starter into your **existing personal ParkPulse repository**.
-
-### Step 1 — Open Your Existing Repository
-
-In VS Code, open your ParkPulse project and terminal.
-
-Check your current branch and remotes:
+### Check your remotes
 
 ```bash
-git status
 git remote -v
 ```
 
-Your `origin` should point to your personal GitHub repository.
+Your `origin` should point to your personal repository.
 
-### Step 2 — Add the School Repository as a Remote
-
-If you have not already added the school repository:
+If you have not already connected the school repository:
 
 ```bash
 git remote add upstream https://github.com/The-Marcy-Lab-School/FA26_CLA_Python_Project1_ParkPulse.git
 ```
 
-If `upstream` already exists, skip this command.
+If `upstream` already exists, skip that command.
 
-### Step 3 — Fetch the Week 2 Branch
+### Fetch the instructor's Week 3 branch
 
 ```bash
-git fetch upstream Week_2
+git fetch upstream Week_3
 ```
 
-This downloads your instructor's Week 2 starter without modifying your `main` branch.
-
-### Step 4 — Create Your Week 2 Branch
-
-First, make sure your Week 1 work is committed and your working tree is clean.
+### Create your Week 3 branch from your completed work
 
 ```bash
 git switch main
 git pull --ff-only origin main
-git switch -c Week_2
+git switch -c Week_3
 ```
 
-Your new branch now starts with your completed Week 1 application.
+If you already have a local `Week_3` branch, switch to it instead.
 
-### Step 5 — Add the Week 2 Starter Materials
-
-Retrieve your instructor's Week 2 README and practice files:
+### Bring in the Week 3 instructional files
 
 ```bash
-git restore --source upstream/Week_2 -- README.md practice/
+git restore --source upstream/Week_3 -- README.md practice/
 ```
 
-Your instructor has also added new Week 2 function starter code to `src/parkpulse.py`.
+Your instructor also added Week 3 function stubs to `src/parkpulse.py`.
 
-**Important:** Do not overwrite your completed Week 1 application with the instructor's entire Python file.
+Review those additions in the school repository's `Week_3` branch and copy the new function stubs into your existing application.
 
-Instead:
+**Do not overwrite your completed Week 1–2 code.**
 
-1. Open the instructor's Week 2 version of `src/parkpulse.py` on GitHub.
-2. Identify the newly added Week 2 function definitions and TODOs.
-3. Add those new sections to your existing `src/parkpulse.py`.
-4. Preserve your completed Week 1 code.
+Continue using the `.gitignore` inherited from `main`. Do not commit `.venv/`.
 
-You now have your Week 1 work plus the Week 2 starter.
+## 2. Interactive Readings
 
-### Step 6 — Commit Your Starter
+### Required: Loops
 
-```bash
-git add README.md practice/ src/parkpulse.py
-git commit -m "Add Week 2 starter materials"
-git push -u origin Week_2
-```
+Read the instructor-assigned sections covering:
 
-You are ready to begin Week 2 development.
+- `for` loops and `range()`
+- `while` loops
+- `break` and `continue`
+- Loop termination and running counts
 
-**Continue using your existing `.gitignore`. Do not commit `.venv/`.**
+**Think:** When should a program use a `for` loop instead of a `while` loop?
 
----
+### Required: Inputs and Outputs
 
-## 2. Interactive Reading — Functions
+Read the instructor-assigned sections covering:
 
-**Required:** Instructor-assigned sections of the Functions interactive GitBook reading.
+- String indexing and slicing
+- String methods
+- `input()` and type conversion
+- Input validation and formatting
 
-Focus on:
+**Think:** Why does user input need validation before conversion?
 
-- Defining and calling functions with `def`
-- Parameters and arguments
-- Return values
-- Local versus global scope
+The classroom reading activities cover selected excerpts, not the complete chapters.
 
-### Think About
+## 3. Python Practice
 
-1. How does a function help eliminate repeated code?
-2. What is the difference between `print()` and `return`?
-3. What happens when a function is called with the wrong number of arguments?
-4. Why might a variable be accessible inside one function but not another?
+Complete the exercises in `practice/`.
 
-Be prepared to discuss one example during our whole-class debrief.
-
-**Optional reading:** Conditional Statements.
-
----
-
-## 3. Python Practice Activities
-
-The `practice/` folder contains short exercises separate from the ParkPulse application.
-
-| File | Skills |
+| File | Focus |
 |---|---|
-| `01_functions.py` | Functions, parameters, defaults, keyword arguments, and returns |
-| `02_scope.py` | Nested calls, local scope, and debugging |
-| `03_decisions.py` | Conditionals, truthiness, and guard clauses |
+| `01_loop_trace.py` | `for`, `range()`, running counts, and loop tracing |
+| `02_string_trace.py` | Indexing, slicing, and string methods |
+| `03_input_trace.py` | Input normalization, validation, and conversion |
+| `04_formatting.py` | f-strings, decimal formatting, and output |
 
-### Activity A — Functions
+For each file:
 
-**File:** `practice/01_functions.py`
+1. Predict the output before running it.
+2. Run the code.
+3. Explain what happened.
+4. Complete the TODOs or extension prompts.
 
-1. Predict the output before running the file.
-2. Identify parameters and arguments.
-3. Explain default and keyword arguments.
-4. Create one new function with a docstring and a return value.
-5. Explain the difference between printing and returning.
-
-Run:
+Run the files using:
 
 ```bash
-python3 practice/01_functions.py
+python3 practice/01_loop_trace.py
+python3 practice/02_string_trace.py
+python3 practice/03_input_trace.py
+python3 practice/04_formatting.py
 ```
 
-### Activity B — Scope and Debugging
+**These files are for practice only and should not become part of the final ParkPulse application.**
 
-**File:** `practice/02_scope.py`
-
-1. Trace the nested function calls.
-2. Identify local variables.
-3. Predict what happens when a local variable is accessed outside its function.
-4. Explain a `NameError` scenario.
-5. Investigate how incorrect function arguments produce `TypeError`.
-6. Explain an `UnboundLocalError` scenario.
-
-Run:
-
-```bash
-python3 practice/02_scope.py
-```
-
-### Activity C — Conditional Decisions
-
-**File:** `practice/03_decisions.py`
-
-1. Predict which branches execute.
-2. Compare `if`, `elif`, and `else`.
-3. Explain `is None` versus a falsy-value check.
-4. Rewrite a nested conditional using guard clauses.
-5. Create a conditional expression.
-
-Run:
-
-```bash
-python3 practice/03_decisions.py
-```
-
-**Remember:** These practice files are for learning. They are not part of the finished ParkPulse application.
-
----
-
-## 4. ParkPulse — Week 2 Development
+## 4. ParkPulse — Week 3 Development
 
 **File:** `src/parkpulse.py`
 
-Your instructor has provided Week 2 starter function definitions and TODOs.
+Continue working from your completed Week 2 application.
 
-Complete them using the approved ParkPulse business requirements.
+Your instructor has provided starter function definitions and TODOs for this week's features.
 
-### Task A — Refactor Into Functions
+### Task A — Input Validation
 
-Review the capacity/utilization logic you wrote during Week 1.
-
-Identify repeated work that should be moved into reusable functions.
-
-Your functions should:
-
-- Have descriptive names.
-- Accept appropriate parameters.
-- Include docstrings.
-- Return values that other code can use.
-- Avoid unnecessary reliance on global variables.
-
-**Preserve your working Week 1 calculations and formatted status.**
-
-### Task B — Ride Eligibility
-
-Complete the ride eligibility function.
+Complete the starter functions for menu choices and numeric input.
 
 Your implementation should:
 
-- Accept relevant visitor and attraction information.
-- Apply the assigned eligibility requirements.
-- Return an appropriate result.
-- Handle missing or invalid values.
+- Read input using `input()`.
+- Remove unnecessary whitespace with `.strip()`.
+- Normalize Y/N responses with `.lower()`.
+- Validate numeric input before converting it.
+- Handle invalid responses appropriately.
 
-Consider which conditions should be checked first.
+**Consider:** What should happen if someone enters an empty string, a negative number, or an unexpected menu choice?
 
-### Task C — Ticket Pricing
+### Task B — Interactive Menu
 
-Complete the ticket pricing function.
+Complete the menu functionality.
+
+Your menu should:
+
+- Display available actions.
+- Allow users to select an action.
+- Repeat until the user chooses to exit.
+- Handle invalid selections.
+- Reuse existing ParkPulse functions.
+
+**Consider:** Why is a `while` loop appropriate for a menu?
+
+### Task C — Queue Simulation
+
+Complete the queue simulation starter function.
 
 Your implementation should:
 
-- Accept the information needed to determine ticket pricing.
-- Apply the assigned pricing rules.
-- Use appropriate conditional logic.
-- Return the calculated result.
-- Handle invalid values.
+- Track the necessary queue-related state.
+- Use a loop to simulate repeated activity.
+- Update state appropriately.
+- Stop when the required condition is met.
+- Reuse your existing capacity rules.
 
-Consider why returning a value is more flexible than printing it inside the function.
+**Consider:** What prevents your simulation from running forever?
 
-### Task D — Capacity Rules
+### Task D — Attraction Summary
 
-Complete the capacity rules function.
+Complete the attraction summary functionality.
 
 Your implementation should:
 
-- Reuse or refactor existing Week 1 capacity logic.
-- Apply the assigned capacity requirements.
-- Use guard clauses where appropriate.
-- Return an appropriate result.
-- Preserve correct Week 1 behavior.
+- Reuse existing attraction information.
+- Use your Week 1 and Week 2 calculations/functions.
+- Format values clearly using f-strings.
+- Display readable attraction information.
 
 ### Task E — Integrate and Test
 
-Once your functions are implemented:
+Connect the new functions to your existing ParkPulse application.
 
-1. Identify where your application should call them.
-2. Pass the appropriate arguments.
-3. Store and use their return values.
-4. Run your existing ParkPulse application.
-5. Confirm Week 1 functionality still works.
-6. Test normal, boundary, and invalid inputs.
+Verify that:
 
-Do not add interactive menus or loop-based features yet. Those are part of Week 3.
+1. The menu repeats and exits correctly.
+2. Invalid menu selections are handled.
+3. Y/N inputs work with different capitalization and surrounding spaces.
+4. Invalid numeric inputs are handled before conversion.
+5. The queue simulation terminates.
+6. Attraction summaries display correctly.
+7. Week 1 and Week 2 functionality still works.
 
----
+Do not add Week 4 list-based collection features yet.
 
 ## 5. AI Edge-Case Activity
 
-Use AI to suggest additional inputs that might reveal problems in your code.
+Ask AI to suggest unusual inputs that might break your menu, queue simulation, or input validation.
 
-Example prompt:
-
-"Suggest five unusual or boundary-case inputs that could test a Python ride eligibility function. Do not write the function or provide implementation code."
-
-For each input:
+For each suggested input:
 
 1. Predict the expected behavior.
-2. Run your function.
-3. Compare your prediction with the actual behavior.
-4. Explain unexpected results.
-5. Decide whether the AI suggestion was useful.
+2. Test your code.
+3. Compare the expected and actual results.
+4. Explain any differences.
 
-**AI can suggest test cases, but you are responsible for the expected behavior and implementation.**
-
----
+Do not ask AI to complete your ParkPulse implementation.
 
 ## 6. Interview Connection
 
-Imagine an interviewer asks:
+Prepare a brief answer to:
 
-**"Why did you refactor that ParkPulse logic into a function?"**
+**"How do you know your loop will terminate?"**
 
-Prepare a 60–90-second explanation using:
+Explain:
 
-- **Point:** What did you change?
-- **Reason:** Why does that structure help?
-- **Evidence:** Which function, input, and observed result support your decision?
-- **Final Point:** What is the takeaway?
+- Why you chose that loop.
+- What state changes during each iteration.
+- What causes the loop to stop.
+- What test or observed output verifies your explanation.
 
-Be prepared to explain how you verified an edge case.
+## 7. Week 3 Completion Checklist
 
----
-
-## 7. Week 2 Completion Checklist
-
-- [ ] My completed Week 1 application is already on `main`.
-- [ ] I fetched the instructor's `Week_2` starter.
-- [ ] I preserved my Week 1 application code.
-- [ ] I completed the required Functions reading activity.
-- [ ] I practiced function calls, scope, and conditional statements.
-- [ ] I refactored ParkPulse into reusable functions.
-- [ ] I completed ride eligibility, ticket pricing, and capacity rules.
-- [ ] I added appropriate guard clauses.
-- [ ] Week 1 functionality still works.
+- [ ] My completed Week 2 application file was already integrated into `main`.
+- [ ] I fetched the instructor's `Week_3` branch.
+- [ ] I preserved my previous ParkPulse work.
+- [ ] I practiced loops, strings, input, and formatting.
+- [ ] My interactive menu repeats and exits.
+- [ ] My queue simulation terminates correctly.
+- [ ] User input is cleaned and validated.
+- [ ] Attraction summaries are readable.
+- [ ] Previous functionality still works.
 - [ ] I tested normal and edge-case inputs.
-- [ ] I can explain one design decision using evidence.
+- [ ] I can explain loop termination with evidence.
 
----
-
-## 8. Commit and Push Week 2
+## 8. Commit and Push Week 3
 
 Confirm your branch:
 
@@ -334,42 +246,41 @@ git branch --show-current
 git status
 ```
 
-Commit your completed work:
+Commit your Week 3 work:
 
 ```bash
-git add src/parkpulse.py practice/ README.md
-git commit -m "Complete Week 2 ParkPulse functions"
-git push origin Week_2
+git add README.md practice/ src/parkpulse.py
+git commit -m "Complete Week 3 interactive ParkPulse"
+git push -u origin Week_3
 ```
 
-Your completed work is now saved on your personal repository's `Week_2` branch.
+Use your actual application filename if it differs.
 
-### Integrate Your Completed Application Into Main
+### Important: Keep Instructional Files Out of Main
 
-**Do not merge the Week 2 README or `practice/` files into `main`.**
+**Do not merge the Week 3 README or `practice/` folder into `main`.**
 
-Those are instructional materials for `Week_2` only.
+These files belong only on the instructional `Week_3` branch.
 
-Once your Week 2 application is complete and approved, transfer only the finished Python application file:
+After completing Week 3 and receiving instructor approval, integrate **only the finished application Python file** into your cumulative `main` branch.
 
 ```bash
 git switch main
 git pull --ff-only origin main
-git restore --source Week_2 -- src/parkpulse.py
+git restore --source Week_3 -- src/parkpulse.py
+git status
 git add src/parkpulse.py
-git commit -m "Integrate Week 2 ParkPulse features"
+git commit -m "Integrate Week 3 ParkPulse application"
 git push origin main
 ```
 
-Your `main` branch should contain the cumulative working application, existing project documentation, and configuration files—not the weekly instructional README or practice exercises.
-
----
+Your `main` branch should retain its existing portfolio README and `.gitignore`, alongside your completed application code.
 
 ## Optional Practice
 
-- Complete the Conditional Statements interactive reading.
-- Trace additional functions involving default arguments, keyword arguments, and scope.
-- Test additional edge cases.
-- Complete any remaining Week 2 function work.
+- Finish the Loops and Inputs and Outputs interactive readings.
+- Practice tracing nested loops and predicting iteration counts.
+- Test additional unusual input scenarios.
+- Explain the difference between `:.2f` formatting and `round()`.
 
-**Next week:** Loops, strings, and interactive input.
+**Next week:** Lists, references, and final ParkPulse integration.

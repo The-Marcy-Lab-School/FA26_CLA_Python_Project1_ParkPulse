@@ -183,3 +183,167 @@ def check_capacity(current_riders, max_capacity):
 # 5. An unrecognized ticket category is supplied.
 #
 # Compare predictions with actual behavior.
+
+
+# ===================================================
+# PARKPULSE — WEEK 3: LOOPS, STRINGS & INPUT
+# ===================================================
+#
+# Keep all Week 1 and Week 2 starter code above.
+#
+# This week:
+# - Build a repeating menu
+# - Simulate queue activity
+# - Clean and validate user input
+# - Display readable attraction summaries
+#
+# Reuse the functions from Week 2.
+
+
+# ---------------------------------------------------
+# FEATURE 5: INPUT VALIDATION
+# ---------------------------------------------------
+
+def get_menu_choice():
+    """
+    Ask the user to select a menu option.
+
+    TODO:
+        1. Read input from the user.
+        2. Remove surrounding whitespace.
+        3. Normalize text when appropriate.
+        4. Check whether the choice is valid.
+        5. Return the accepted choice.
+
+    Think:
+        What happens if the user enters
+        spaces, an empty string, or an
+        unexpected option?
+    """
+    pass
+
+
+def get_numeric_input(prompt):
+    """
+    Request and validate numeric user input.
+
+    TODO:
+        1. Read the input as a string.
+        2. Remove extra whitespace.
+        3. Decide what counts as valid input.
+        4. Convert only after validation.
+        5. Decide how to handle invalid input.
+
+    Think:
+        What happens with negative numbers,
+        decimals, or nonnumeric characters?
+    """
+    pass
+
+
+# ---------------------------------------------------
+# FEATURE 6: INTERACTIVE MENU
+# ---------------------------------------------------
+
+def run_menu():
+    """
+    Run the ParkPulse interactive menu.
+
+    TODO:
+        1. Decide which options to display.
+        2. Allow the user to select an action.
+        3. Repeat until the user chooses to exit.
+        4. Handle unexpected menu choices.
+        5. Call existing ParkPulse functions.
+
+    Think:
+        Should this use for or while?
+        What condition ends the loop?
+        Where should break or continue go?
+    """
+    pass
+
+
+# ---------------------------------------------------
+# FEATURE 7: QUEUE SIMULATION
+# ---------------------------------------------------
+
+def simulate_queue():
+    """
+    Simulate queue-related activity.
+
+    TODO:
+        1. Identify the state to track.
+        2. Decide what changes each iteration.
+        3. Choose an appropriate loop.
+        4. Establish a stopping condition.
+        5. Reuse existing capacity rules.
+        6. Report the result.
+
+    Think:
+        What prevents an infinite loop?
+        How does capacity affect the process?
+        What evidence shows that the
+        simulation stops correctly?
+    """
+    pass
+
+
+# ---------------------------------------------------
+# FEATURE 8: ATTRACTION SUMMARY
+# ---------------------------------------------------
+
+def display_attraction_summary():
+    """
+    Display readable attraction information.
+
+    TODO:
+        1. Reuse existing attraction data.
+        2. Reuse Week 1 and Week 2 logic.
+        3. Format numbers appropriately.
+        4. Produce a readable summary.
+
+    Think:
+        Which values should be formatted?
+        Where should calculations happen?
+        Where should output happen?
+    """
+    pass
+
+
+# ---------------------------------------------------
+# FEATURE 9: APPLICATION INTEGRATION
+# ---------------------------------------------------
+
+# TODO:
+# Connect the new features to the existing
+# ParkPulse application.
+#
+# Consider:
+# - Which function starts the interaction?
+# - Where should the menu loop run?
+# - When should the queue simulation run?
+# - How do you avoid repeating Week 2 logic?
+# - How does the user exit safely?
+#
+# Preserve existing Week 1 and Week 2 behavior.
+
+
+# ---------------------------------------------------
+# WEEK 3: TESTING AND DEBUGGING
+# ---------------------------------------------------
+
+# TODO:
+# Test the following situations:
+#
+# 1. A valid menu selection.
+# 2. An invalid menu selection.
+# 3. An empty input.
+# 4. A Y/N response with extra spaces.
+# 5. A negative numeric input.
+# 6. A decimal numeric input.
+# 7. A queue that reaches its stopping condition.
+# 8. A user who chooses to exit.
+#
+# Predict before running.
+# Record the actual results.
