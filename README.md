@@ -82,14 +82,18 @@ git restore --source upstream/Week_2 -- README.md practice/
 
 Your instructor has also added new Week 2 function starter code to `src/parkpulse.py`.
 
-**Important:** Do not overwrite your completed Week 1 application with the instructor's entire Python file.
+**Important:** Do not restore the instructor's whole Python file. It would overwrite your completed Week 1 code.
 
-Instead:
+Instead, print the instructor's version in your terminal:
 
-1. Open the instructor's Week 2 version of `src/parkpulse.py` on GitHub.
-2. Identify the newly added Week 2 function definitions and TODOs.
-3. Add those new sections to your existing `src/parkpulse.py`.
-4. Preserve your completed Week 1 code.
+```bash
+git --no-pager show upstream/Week_2:src/parkpulse.py
+```
+
+1. Find the `PARKPULSE — WEEK 2: FUNCTIONS, SCOPE & DECISIONS` banner.
+2. Copy everything from that banner to the end of the output.
+3. Paste it at the bottom of your own `src/parkpulse.py`, below your Week 1 code.
+4. Run `python3 src/parkpulse.py` and confirm your Week 1 status message still prints.
 
 You now have your Week 1 work plus the Week 2 starter.
 
@@ -133,60 +137,23 @@ Be prepared to discuss one example during our whole-class debrief.
 
 ## 3. Python Practice Activities
 
-The `practice/` folder contains short exercises separate from the ParkPulse application.
+The `practice/` folder contains short exercises separate from the ParkPulse application. Each file holds the code examples from this week's slides.
 
-| File | Skills |
-|---|---|
-| `01_functions.py` | Functions, parameters, defaults, keyword arguments, and returns |
-| `02_scope.py` | Nested calls, local scope, and debugging |
-| `03_decisions.py` | Conditionals, truthiness, and guard clauses |
+| File | Skills | Slides |
+|---|---|---|
+| `01_functions.py` | Functions, parameters, defaults, keyword arguments, returns, print vs. return | 10, 13, 14 |
+| `02_scope.py` | Nested calls, local vs. global scope, `NameError`, `TypeError`, `UnboundLocalError` | 12, 16–19 |
+| `03_decisions.py` | `if`/`elif`/`else`, truthiness, `is None`, guard clauses, conditional expressions | 23–26 |
 
-### Activity A — Functions
+For each file:
 
-**File:** `practice/01_functions.py`
-
-1. Predict the output before running the file.
-2. Identify parameters and arguments.
-3. Explain default and keyword arguments.
-4. Create one new function with a docstring and a return value.
-5. Explain the difference between printing and returning.
-
-Run:
+1. Predict every printed line before running it, and write your predictions down.
+2. Run the file and compare.
+3. Answer the lettered prompts at the bottom of the file. Some prompts ask you to uncomment a line that raises an error: run it, read the last line of the error, then comment it back out.
 
 ```bash
 python3 practice/01_functions.py
-```
-
-### Activity B — Scope and Debugging
-
-**File:** `practice/02_scope.py`
-
-1. Trace the nested function calls.
-2. Identify local variables.
-3. Predict what happens when a local variable is accessed outside its function.
-4. Explain a `NameError` scenario.
-5. Investigate how incorrect function arguments produce `TypeError`.
-6. Explain an `UnboundLocalError` scenario.
-
-Run:
-
-```bash
 python3 practice/02_scope.py
-```
-
-### Activity C — Conditional Decisions
-
-**File:** `practice/03_decisions.py`
-
-1. Predict which branches execute.
-2. Compare `if`, `elif`, and `else`.
-3. Explain `is None` versus a falsy-value check.
-4. Rewrite a nested conditional using guard clauses.
-5. Create a conditional expression.
-
-Run:
-
-```bash
 python3 practice/03_decisions.py
 ```
 
@@ -198,75 +165,77 @@ python3 practice/03_decisions.py
 
 **File:** `src/parkpulse.py`
 
-Your instructor has provided Week 2 starter function definitions and TODOs.
+Your instructor has provided Week 2 starter function definitions and TODOs. Complete them using the Business Rules below. The same values are repeated in each function's docstring.
 
-Complete them using the approved ParkPulse business requirements.
+### Business Rules
+
+| Rule | Function | Inputs | Result |
+|---|---|---|---|
+| Ride eligibility | `check_ride_eligibility(visitor_height, minimum_height)` | Heights in inches. Sky Loop minimum height: 48 inches. | `True` if `visitor_height >= minimum_height` (exactly 48 is eligible); `False` if shorter; `None` if either value is `None`, 0, or negative |
+| Ticket pricing | `calculate_ticket_price(ticket_type, base_price)` | `ticket_type` is `"adult"`, `"child"`, or `"senior"` (lowercase). Base price: $60.00 | adult = 100% ($60.00); child = 50% ($30.00); senior = 75% ($45.00); `None` for any other ticket type or a base price that is `None`, 0, or negative |
+| Capacity rules | `check_capacity(current_riders, max_capacity)` | Sky Loop max capacity: 24 riders. Utilization = `current_riders / max_capacity` | `"full"` if `current_riders == max_capacity`; `"near capacity"` if utilization is 80% or more (20 of 24 = 83%); otherwise `"available"`; `None` if `max_capacity` is `None`, 0, or negative, or `current_riders` is `None`, negative, or more than `max_capacity` |
 
 ### Task A — Refactor Into Functions
 
-Review the capacity/utilization logic you wrote during Week 1.
-
-Identify repeated work that should be moved into reusable functions.
+Move your Week 1 utilization calculation into a function, for example `calculate_utilization(current_riders, max_capacity)`, that **returns** the utilization instead of printing it.
 
 Your functions should:
 
 - Have descriptive names.
 - Accept appropriate parameters.
-- Include docstrings.
+- Include docstrings. Write real ones: they become the "How it's built" section of your portfolio README in Week 4.
 - Return values that other code can use.
 - Avoid unnecessary reliance on global variables.
 
-**Preserve your working Week 1 calculations and formatted status.**
+**Done when:** `python3 src/parkpulse.py` prints the same Week 1 status message as before.
 
 ### Task B — Ride Eligibility
 
-Complete the ride eligibility function.
+Complete `check_ride_eligibility()` using the eligibility rule in the table.
 
-Your implementation should:
+- Handle missing (`None`) and invalid values first, with guard clauses.
+- Then apply the height rule and return the result.
 
-- Accept relevant visitor and attraction information.
-- Apply the assigned eligibility requirements.
-- Return an appropriate result.
-- Handle missing or invalid values.
-
-Consider which conditions should be checked first.
+Consider which conditions should be checked first. What happens if you compare `None` to a number?
 
 ### Task C — Ticket Pricing
 
-Complete the ticket pricing function.
+Complete `calculate_ticket_price()` using the pricing rules in the table.
 
-Your implementation should:
-
-- Accept the information needed to determine ticket pricing.
-- Apply the assigned pricing rules.
-- Use appropriate conditional logic.
-- Return the calculated result.
-- Handle invalid values.
+- Validate `base_price` with a guard clause.
+- Use `if`/`elif`/`else` for the ticket categories.
+- Return the price; do not print inside the function.
 
 Consider why returning a value is more flexible than printing it inside the function.
 
 ### Task D — Capacity Rules
 
-Complete the capacity rules function.
+Complete `check_capacity()` using the capacity rules in the table.
 
-Your implementation should:
-
-- Reuse or refactor existing Week 1 capacity logic.
-- Apply the assigned capacity requirements.
-- Use guard clauses where appropriate.
-- Return an appropriate result.
+- Reuse your Task A utilization function.
+- Guard against a zero or missing `max_capacity` **before** dividing.
+- Return one of the status strings.
 - Preserve correct Week 1 behavior.
 
 ### Task E — Integrate and Test
 
-Once your functions are implemented:
+Call your functions from the existing ParkPulse application, store their return values, and print the results with your Week 1 status message.
 
-1. Identify where your application should call them.
-2. Pass the appropriate arguments.
-3. Store and use their return values.
-4. Run your existing ParkPulse application.
-5. Confirm Week 1 functionality still works.
-6. Test normal, boundary, and invalid inputs.
+Then test each function: add these calls inside `print()` at the bottom of `src/parkpulse.py`, predict each result, and run the file. Your results must match:
+
+| Call | Expected |
+|---|---|
+| `check_ride_eligibility(48, 48)` | `True` (boundary) |
+| `check_ride_eligibility(40, 48)` | `False` |
+| `check_ride_eligibility(None, 48)` | `None` |
+| `calculate_ticket_price("child", 60.00)` | `30.0` |
+| `calculate_ticket_price("vip", 60.00)` | `None` |
+| `calculate_ticket_price("adult", -5)` | `None` |
+| `check_capacity(20, 24)` | `"near capacity"` |
+| `check_capacity(24, 24)` | `"full"` |
+| `check_capacity(5, 0)` | `None` (no crash) |
+
+The edge-case notes at the bottom of the starter code list more cases to predict.
 
 Do not add interactive menus or loop-based features yet. Those are part of Week 3.
 
@@ -320,7 +289,7 @@ Be prepared to explain how you verified an edge case.
 - [ ] I completed ride eligibility, ticket pricing, and capacity rules.
 - [ ] I added appropriate guard clauses.
 - [ ] Week 1 functionality still works.
-- [ ] I tested normal and edge-case inputs.
+- [ ] I tested normal and edge-case inputs, and every call in the Task E table matches its expected result.
 - [ ] I can explain one design decision using evidence.
 
 ---
