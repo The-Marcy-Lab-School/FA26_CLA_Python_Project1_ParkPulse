@@ -68,6 +68,9 @@ Attraction data:
 #
 # TODO: Integrate new functions into your
 # existing ParkPulse application.
+#
+# The rule values below match the Business Rules
+# table in the Week 2 README.
 
 
 # ---------------------------------------------------
@@ -76,20 +79,27 @@ Attraction data:
 
 def check_ride_eligibility(visitor_height, minimum_height):
     """
-    Determine whether a visitor meets the assigned
-    requirements for an attraction.
+    Determine whether a visitor is tall enough to ride.
 
     Parameters:
-        visitor_height: The visitor's height.
-        minimum_height: The ride's minimum height.
+        visitor_height: The visitor's height in inches.
+        minimum_height: The ride's minimum height in inches
+            (Sky Loop: 48 inches).
 
     Returns:
-        TODO: Decide on a meaningful result.
+        True if eligible, False if too short,
+        None if an input is missing or invalid.
+
+    Eligibility rule:
+        - visitor_height >= minimum_height -> True
+          (exactly 48 inches on Sky Loop is eligible)
+        - visitor_height < minimum_height -> False
+        - either value is None, 0, or negative -> None
 
     TODO:
         1. Handle missing inputs.
         2. Identify invalid values.
-        3. Apply the assigned eligibility rule.
+        3. Apply the eligibility rule above.
         4. Return the result.
     """
     pass
@@ -101,19 +111,29 @@ def check_ride_eligibility(visitor_height, minimum_height):
 
 def calculate_ticket_price(ticket_type, base_price):
     """
-    Determine a ticket price using assigned rules.
+    Determine a ticket price from its category.
 
     Parameters:
-        ticket_type: The requested ticket category.
-        base_price: The starting ticket price.
+        ticket_type: "adult", "child", or "senior"
+            (lowercase, exactly as written).
+        base_price: The adult price in dollars
+            (ParkPulse uses $60.00).
 
     Returns:
-        TODO: Decide on the appropriate value.
+        The price as a number, or None for an
+        unknown category or an invalid base price.
+
+    Pricing rules:
+        - "adult"  -> 100% of base_price  ($60.00)
+        - "child"  -> 50% of base_price   ($30.00)
+        - "senior" -> 75% of base_price   ($45.00)
+        - any other ticket_type -> None
+        - base_price is None, 0, or negative -> None
 
     TODO:
         1. Validate the provided inputs.
         2. Identify the required pricing categories.
-        3. Apply the assigned pricing rules.
+        3. Apply the pricing rules above.
         4. Return the calculated result.
 
     Consider:
@@ -133,16 +153,28 @@ def check_capacity(current_riders, max_capacity):
 
     Parameters:
         current_riders: Current rider count.
-        max_capacity: Maximum allowed riders.
+        max_capacity: Maximum allowed riders
+            (Sky Loop: 24 riders).
 
     Returns:
-        TODO: Choose a useful result for the caller.
+        "full", "near capacity", or "available",
+        or None if an input is missing or invalid.
+
+    Capacity rules (utilization = current_riders / max_capacity):
+        - max_capacity is None, 0, or negative -> None
+          (check this first: dividing by 0 crashes)
+        - current_riders is None, negative, or more
+          than max_capacity -> None
+        - current_riders == max_capacity -> "full"
+        - utilization of 80% or more -> "near capacity"
+          (Sky Loop at 20 of 24 riders = 83%)
+        - otherwise -> "available"
 
     TODO:
         1. Review the Week 1 capacity calculations.
         2. Decide which existing work can be reused.
         3. Protect against invalid values.
-        4. Apply the assigned capacity rules.
+        4. Apply the capacity rules above.
         5. Return the result.
 
     Important:
