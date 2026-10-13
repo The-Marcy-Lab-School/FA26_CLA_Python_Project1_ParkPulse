@@ -181,15 +181,12 @@ You are on `Week_1` and ready to begin Week 1.
 
 ## 2. Readings
 
-**Required:** the Intro to Programming and the Data Types, Variables, and Operators interactive readings (GitBook). Your instructor shares the links in class.
+Each reading opens with a short real-world scenario in **§1**. **Always read §1 first**: it's the "why" for everything after it. Then read the sections below. Everything else (including **Go further**) is optional.
 
-Focus on:
-
-- What a program, the interpreter, and default (top-to-bottom) control flow are
-- Comments, expressions, and statements
-- `str`, `int`, `float`, `bool`, and `None`
-- Arithmetic (`/`, `//`, `%`), comparison, logical, membership, and identity operators
-- Variables, constants, and snake_case naming
+| Reading | Read | Skip for now |
+|---|---|---|
+| [Intro to Programming](https://the-marcy-lab-school.github.io/SWE_Interactive_Readings/Mod1/01-intro-to-programming/) | §1 scenario · §3 three kinds of line · §4 running the file with the interpreter · §6 control flow | §2, §5, §7–9 (optional) |
+| [Data Types, Variables, and Operators](https://the-marcy-lab-school.github.io/SWE_Interactive_Readings/Mod1/02-data-types-variables-operators/) | §1 scenario · §3 every value has a type · §4 the six families of operators · §6 variables | §2, §5, §7–8 (optional) |
 
 ### Think about
 
