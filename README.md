@@ -1,6 +1,6 @@
 # ParkPulse — Week 1: Python Launch — Syntax, State & Operators
 
-**Branch:** `week-1-python-launch` · **Project file:** `src/parkpulse.py` · **You need:** a GitHub account, VS Code with the Python extension, and Python 3 from the Miniconda setup in class
+**Branch:** `Week_1` · **Project file:** `src/parkpulse.py` · **You need:** a GitHub account, VS Code with the Python extension, and Python 3 from the Miniconda setup in class
 
 > This README is for Week 1 only. Do **not** copy it into `main`.
 > By Week 4, your `main` branch gets one ParkPulse README that covers the whole project.
@@ -68,23 +68,23 @@ git remote -v
 **Step 7.** Download the school's Week 1 branch:
 
 ```bash
-git fetch upstream week-1-python-launch
+git fetch upstream Week_1
 ```
 
-**You should see:** a line ending in `week-1-python-launch -> FETCH_HEAD`. Your files do not change yet.
+**You should see:** a line ending in `Week_1 -> FETCH_HEAD`. Your files do not change yet.
 
 **Step 8.** Create your own Week 1 branch:
 
 ```bash
-git switch -c week-1-python-launch
+git switch -c Week_1
 ```
 
-**You should see:** `Switched to a new branch 'week-1-python-launch'`. You are now on `week-1-python-launch`. Stay on this branch for all Week 1 work.
+**You should see:** `Switched to a new branch 'Week_1'`. You are now on `Week_1`. Stay on this branch for all Week 1 work.
 
 **Step 9.** Copy the Week 1 starter files (this README, `src/parkpulse.py`, and `practice/`) onto your branch. Week 1 has no earlier code, so you take the whole starter file:
 
 ```bash
-git restore --source upstream/week-1-python-launch -- README.md src/parkpulse.py practice/
+git restore --source upstream/Week_1 -- README.md src/parkpulse.py practice/
 ```
 
 **You should see:** no output. In the VS Code Explorer, `README.md` now shows these Week 1 instructions, and `src/parkpulse.py` and the `practice/` folder appear.
@@ -149,7 +149,7 @@ python3 src/parkpulse.py
 git status
 ```
 
-**You should see:** `On branch week-1-python-launch`, then `modified: README.md` under "Changes not staged for commit", and `practice/` and `src/parkpulse.py` under "Untracked files". `.venv/` must **not** be listed. If it is, stop and ask your instructor before committing.
+**You should see:** `On branch Week_1`, then `modified: README.md` under "Changes not staged for commit", and `practice/` and `src/parkpulse.py` under "Untracked files". `.venv/` must **not** be listed. If it is, stop and ask your instructor before committing.
 
 **Step 17.** Stage the starter files:
 
@@ -165,17 +165,17 @@ git add README.md src/parkpulse.py practice/
 git commit -m "Add Week 1 starter materials"
 ```
 
-**You should see:** `[week-1-python-launch <commit id>] Add Week 1 starter materials` and `5 files changed`.
+**You should see:** `[Week_1 <commit id>] Add Week 1 starter materials` and `5 files changed`.
 
 **Step 19.** Push your branch to your GitHub repository:
 
 ```bash
-git push -u origin week-1-python-launch
+git push -u origin Week_1
 ```
 
-**You should see:** `* [new branch] week-1-python-launch -> week-1-python-launch` and a line saying the branch is set up to track `origin`.
+**You should see:** `* [new branch] Week_1 -> Week_1` and a line saying the branch is set up to track `origin`.
 
-You are on `week-1-python-launch` and ready to begin Week 1.
+You are on `Week_1` and ready to begin Week 1.
 
 ---
 
@@ -239,7 +239,7 @@ These files stay on this week's branch; they never go to `main`.
 
 ## 4. ParkPulse — Week 1 tasks
 
-**File:** `src/parkpulse.py` · **Branch:** `week-1-python-launch`
+**File:** `src/parkpulse.py` · **Branch:** `Week_1`
 
 Complete TODO 1–4 in the starter using the attraction data below. The same data is in the file's docstring.
 
@@ -341,7 +341,7 @@ Be ready to explain one way Python differs from JavaScript, for example `==` ver
 
 - [ ] I created my own `parkpulse` repository from the template (not a fork).
 - [ ] I created and activated `.venv`, selected it in VS Code, and `.venv/` is not committed.
-- [ ] I fetched the school's `week-1-python-launch` starter onto my own `week-1-python-launch` branch.
+- [ ] I fetched the school's `Week_1` starter onto my own `Week_1` branch.
 - [ ] I completed the Intro to Programming and Data Types, Variables, and Operators readings.
 - [ ] I ran all three practice files, wrote my predictions, and replaced every `None` marked `# TODO`.
 - [ ] Task A: my attraction data uses clearly named variables of the correct types.
@@ -349,7 +349,7 @@ Be ready to explain one way Python differs from JavaScript, for example `==` ver
 - [ ] Task C: `python3 src/parkpulse.py` prints the name, utilization percentage (`83.33%`), and open status.
 - [ ] Task D: my code follows PEP 8.
 - [ ] I can explain an expression versus a statement using a line of my code.
-- [ ] My Week 1 work is committed and pushed to `week-1-python-launch`.
+- [ ] My Week 1 work is committed and pushed to `Week_1`.
 - [ ] My finished `src/parkpulse.py` is integrated into `main`.
 
 ---
@@ -364,7 +364,7 @@ Be ready to explain one way Python differs from JavaScript, for example `==` ver
 git branch --show-current
 ```
 
-**You should see:** `week-1-python-launch`. If you see anything else, run `git switch week-1-python-launch` first.
+**You should see:** `Week_1`. If you see anything else, run `git switch Week_1` first.
 
 **Step 2.** Check what changed:
 
@@ -388,15 +388,15 @@ git add src/parkpulse.py practice/ README.md
 git commit -m "Complete Week 1 ParkPulse status"
 ```
 
-**You should see:** `[week-1-python-launch <commit id>] Complete Week 1 ParkPulse status`.
+**You should see:** `[Week_1 <commit id>] Complete Week 1 ParkPulse status`.
 
 **Step 5.** Push it:
 
 ```bash
-git push origin week-1-python-launch
+git push origin Week_1
 ```
 
-**You should see:** a line ending in `week-1-python-launch -> week-1-python-launch`. Your work is saved on your GitHub repository's `week-1-python-launch` branch.
+**You should see:** a line ending in `Week_1 -> Week_1`. Your work is saved on your GitHub repository's `Week_1` branch.
 
 ### Integrate your finished application into main
 
@@ -421,7 +421,7 @@ git pull --ff-only origin main
 **Step 8.** Copy only your finished application file from your Week 1 branch:
 
 ```bash
-git restore --source week-1-python-launch -- src/parkpulse.py
+git restore --source Week_1 -- src/parkpulse.py
 ```
 
 **You should see:** no output.
