@@ -221,15 +221,17 @@ def check_capacity(current_riders, max_capacity):
 # PARKPULSE — WEEK 3: LOOPS, STRINGS & INPUT
 # ===================================================
 #
-# Keep all Week 1 and Week 2 starter code above.
+# Keep all Week 1 and Week 2 code above.
 #
 # This week:
-# - Build a repeating menu
-# - Simulate queue activity
 # - Clean and validate user input
-# - Display readable attraction summaries
+# - Build a repeating menu
+# - Simulate the Sky Loop queue
+# - Display a readable attraction summary
 #
-# Reuse the functions from Week 2.
+# Reuse your Week 1 variables and Week 2 functions.
+# The values below match the Business Rules table
+# in the Week 3 README.
 
 
 # ---------------------------------------------------
@@ -238,37 +240,96 @@ def check_capacity(current_riders, max_capacity):
 
 def get_menu_choice():
     """
-    Ask the user to select a menu option.
+    Ask the user to pick a menu option.
+
+    Prompt (exactly): "Choose an option (1-5): "
+
+    Returns:
+        The choice as a string, "1" through "5",
+        or None if the choice is invalid.
+
+    Rules:
+        - Remove surrounding spaces with .strip()
+          (" 3 " counts as "3").
+        - Valid choices are exactly "1", "2", "3",
+          "4", or "5".
+        - Anything else ("", "6", "3.0", "exit"):
+          print "Please enter a number from 1 to 5."
+          and return None.
 
     TODO:
-        1. Read input from the user.
+        1. Read input with the prompt above.
         2. Remove surrounding whitespace.
-        3. Normalize text when appropriate.
-        4. Check whether the choice is valid.
-        5. Return the accepted choice.
+        3. Check whether the choice is valid.
+        4. Return the choice, or print the message
+           and return None.
+    """
+    pass
 
-    Think:
-        What happens if the user enters
-        spaces, an empty string, or an
-        unexpected option?
+
+def get_yes_no(prompt):
+    """
+    Ask a yes/no question and return the answer.
+
+    Parameters:
+        prompt: The question to show,
+            for example "Exit ParkPulse? [Y/N]: "
+
+    Returns:
+        True for yes, False for no,
+        None if the answer is not recognized.
+
+    Rules (after .strip().lower()):
+        - "y" or "yes" -> True
+          (" Y ", "YES", and "yes" all count)
+        - "n" or "no" -> False
+        - anything else ("", "maybe", "yep"):
+          print "Please answer Y or N."
+          and return None
+
+    TODO:
+        1. Read input using the prompt parameter.
+        2. Normalize it with .strip() and .lower().
+        3. Return True, False, or None using the
+           rules above.
     """
     pass
 
 
 def get_numeric_input(prompt):
     """
-    Request and validate numeric user input.
+    Ask for a whole number (0 or more), with up to 3 tries.
+
+    Parameters:
+        prompt: The question to show,
+            for example "Visitor height in inches: "
+
+    Returns:
+        The number as an int, or None after
+        3 invalid entries.
+
+    Rules:
+        - Remove surrounding spaces with .strip().
+        - Valid: the cleaned text passes .isdigit()
+          ("12", " 7 ", "0"). Convert with int()
+          only after it passes.
+        - Invalid ("", "-3", "3.5", "twelve"):
+          print "Please enter a whole number (0 or more)."
+          and ask again.
+        - After 3 invalid entries in a row:
+          print "Too many invalid entries."
+          and return None.
 
     TODO:
-        1. Read the input as a string.
-        2. Remove extra whitespace.
-        3. Decide what counts as valid input.
-        4. Convert only after validation.
-        5. Decide how to handle invalid input.
+        1. Use a loop that runs at most 3 times.
+        2. Read and clean the input each time.
+        3. Validate BEFORE converting.
+        4. Return the int as soon as one entry is valid.
+        5. After the loop, print the message and
+           return None.
 
     Think:
-        What happens with negative numbers,
-        decimals, or nonnumeric characters?
+        How do you know this loop always ends?
     """
     pass
 
@@ -279,19 +340,48 @@ def get_numeric_input(prompt):
 
 def run_menu():
     """
-    Run the ParkPulse interactive menu.
+    Run the ParkPulse menu until the user exits.
+
+    Each time through the loop, print an empty line
+    and this menu (exactly), then call get_menu_choice():
+
+        ParkPulse — Sky Loop
+        1. Show attraction summary
+        2. Check ride eligibility
+        3. Price a ticket
+        4. Simulate the queue
+        5. Exit
+
+    What each choice does:
+        "1" -> call display_attraction_summary()
+        "2" -> height = get_numeric_input(
+                   "Visitor height in inches: ")
+               If height is None, go back to the menu.
+               Otherwise call check_ride_eligibility(height, 48):
+                 True  -> "Eligible to ride Sky Loop."
+                 False -> "Not tall enough: Sky Loop requires 48 inches."
+                 None  -> "Height must be more than 0 inches."
+        "3" -> ticket_type = input(
+                   "Ticket type (adult/child/senior): ")
+               cleaned with .strip().lower(), then
+               calculate_ticket_price(ticket_type, 60.00):
+                 a price -> f"{ticket_type} ticket: ${price:.2f}"
+                            (for example "child ticket: $30.00")
+                 None    -> "Unknown ticket type. Choose adult, child, or senior."
+        "4" -> call simulate_queue()
+        "5" -> get_yes_no("Exit ParkPulse? [Y/N]: "):
+                 True        -> print "Goodbye!" and end the loop
+                 False/None  -> go back to the menu
+        None (invalid choice) -> go back to the menu
+               (get_menu_choice() already printed the message)
 
     TODO:
-        1. Decide which options to display.
-        2. Allow the user to select an action.
-        3. Repeat until the user chooses to exit.
-        4. Handle unexpected menu choices.
-        5. Call existing ParkPulse functions.
-
-    Think:
-        Should this use for or while?
-        What condition ends the loop?
-        Where should break or continue go?
+        1. Choose the loop: it must repeat until
+           the user confirms Exit.
+        2. Print the menu and get the choice.
+        3. Use continue for an invalid choice.
+        4. Handle each choice with if/elif.
+        5. Use break when the user confirms Exit.
     """
     pass
 
@@ -302,21 +392,42 @@ def run_menu():
 
 def simulate_queue():
     """
-    Simulate queue-related activity.
+    Simulate Sky Loop ride cycles until the line is empty.
+
+    Queue rules:
+        - Ask: get_numeric_input("Guests in line: ")
+          If it returns None, return without simulating.
+        - If 0 guests are waiting, print
+          "No one is waiting." and return.
+        - Each ride cycle boards up to the Sky Loop
+          max capacity (24 riders: use your Week 1
+          variable, not the number 24).
+          If fewer are waiting, all of them board.
+        - Each ride cycle takes 5 minutes.
+        - After each cycle, get the status with
+          check_capacity(boarding, <your max capacity variable>)
+          and print (exactly):
+          f"Cycle {cycle}: {boarding} board ({status}), {waiting} still waiting"
+        - Stop when 0 guests are waiting, then print:
+          f"Line cleared. Ride cycles: {cycles}. Total time: {minutes} minutes."
+
+    Example (50 guests in line):
+        Cycle 1: 24 board (full), 26 still waiting
+        Cycle 2: 24 board (full), 2 still waiting
+        Cycle 3: 2 board (available), 0 still waiting
+        Line cleared. Ride cycles: 3. Total time: 15 minutes.
 
     TODO:
-        1. Identify the state to track.
-        2. Decide what changes each iteration.
-        3. Choose an appropriate loop.
-        4. Establish a stopping condition.
-        5. Reuse existing capacity rules.
-        6. Report the result.
+        1. Track the state: guests waiting, cycle count.
+        2. Choose the loop and its stopping condition.
+        3. Each cycle: work out how many board, update
+           the guests waiting, and count the cycle.
+        4. Reuse check_capacity() for the status.
+        5. Print each cycle, then the final line.
 
     Think:
+        Which value gets smaller on every pass?
         What prevents an infinite loop?
-        How does capacity affect the process?
-        What evidence shows that the
-        simulation stops correctly?
     """
     pass
 
@@ -327,18 +438,35 @@ def simulate_queue():
 
 def display_attraction_summary():
     """
-    Display readable attraction information.
+    Print a readable summary of Sky Loop.
+
+    Use your Week 1 variables (name, max capacity,
+    current riders, open) and your Week 2 functions.
+    Do not hard-code the numbers in the output.
+
+    Print exactly these lines for the Week 1 data:
+
+        Sky Loop summary
+          Open: yes
+          Riders: 20 of 24
+          Utilization: 83.33%
+          Capacity: near capacity
+          Tickets: adult $60.00, child $30.00, senior $45.00
+
+    Formatting rules:
+        - Open: "yes" if the attraction is open, else "no".
+        - Utilization: current riders / max capacity,
+          shown with :.2% (Week 1).
+        - Capacity: the string check_capacity() returns.
+        - Prices: from calculate_ticket_price(..., 60.00),
+          shown with :.2f (two decimal places).
 
     TODO:
-        1. Reuse existing attraction data.
-        2. Reuse Week 1 and Week 2 logic.
-        3. Format numbers appropriately.
-        4. Produce a readable summary.
-
-    Think:
-        Which values should be formatted?
-        Where should calculations happen?
-        Where should output happen?
+        1. Reuse the Week 1 variables.
+        2. Call your Week 2 functions for the
+           capacity status and prices.
+        3. Format the numbers with f-strings.
+        4. Print the lines above.
     """
     pass
 
@@ -348,17 +476,12 @@ def display_attraction_summary():
 # ---------------------------------------------------
 
 # TODO:
-# Connect the new features to the existing
-# ParkPulse application.
+# Start the menu: call run_menu() once, as the
+# last line of this file (below all the functions).
 #
-# Consider:
-# - Which function starts the interaction?
-# - Where should the menu loop run?
-# - When should the queue simulation run?
-# - How do you avoid repeating Week 2 logic?
-# - How does the user exit safely?
-#
-# Preserve existing Week 1 and Week 2 behavior.
+# Your Week 1 status message and any Week 2 test
+# prints will still show first. Then the menu starts.
+# Choosing 5 and answering Y ends the program.
 
 
 # ---------------------------------------------------
@@ -366,16 +489,15 @@ def display_attraction_summary():
 # ---------------------------------------------------
 
 # TODO:
-# Test the following situations:
+# Run python3 src/parkpulse.py and test each case.
+# Predict first, then compare with the README
+# "Done when" sessions.
 #
-# 1. A valid menu selection.
-# 2. An invalid menu selection.
-# 3. An empty input.
-# 4. A Y/N response with extra spaces.
-# 5. A negative numeric input.
-# 6. A decimal numeric input.
-# 7. A queue that reaches its stopping condition.
-# 8. A user who chooses to exit.
-#
-# Predict before running.
-# Record the actual results.
+# 1. A valid menu choice: 1
+# 2. An invalid menu choice: 9
+# 3. An empty menu choice (just press Enter)
+# 4. Exit with " y " (spaces and lowercase)
+# 5. A negative height: -3
+# 6. A decimal height: 47.5
+# 7. A queue of 50 guests (3 cycles) and of 0 guests
+# 8. Exit with N, then exit with Y
