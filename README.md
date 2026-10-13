@@ -172,14 +172,12 @@ You are on `Week_2` and ready to begin Week 2.
 
 ## 2. Readings
 
-**Required:** the Functions interactive reading (GitBook). **Optional:** the Conditional Statements interactive reading. Your instructor shares the links in class.
+Each reading opens with a short real-world scenario in **§1**. **Always read §1 first**: it's the "why" for everything after it. Then read the sections below. Everything else (including **Go further**) is optional.
 
-Focus on:
-
-- Defining and calling functions with `def`
-- Parameters and arguments
-- Return values
-- Local versus global scope
+| Reading | Read | Skip for now |
+|---|---|---|
+| [Functions](https://the-marcy-lab-school.github.io/SWE_Interactive_Readings/Mod1/03-functions/) | §1 scenario · §5 turning repeated code into a function · §6 what `return` does · §7 scope | §2–4, §8–9 (optional) |
+| [Conditional Statements](https://the-marcy-lab-school.github.io/SWE_Interactive_Readings/Mod1/04-conditional-statements/) | §1 scenario · §3 why condition order matters · §4 boolean context (truthy/falsy) · §5 guard clauses | §2, §6–8 (optional) |
 
 ### Think about
 
