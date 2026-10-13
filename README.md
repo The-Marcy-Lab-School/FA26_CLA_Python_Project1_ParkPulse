@@ -114,14 +114,12 @@ Keep using the `.gitignore` from `main`. Never commit `.venv/`.
 
 ## 2. Readings
 
-**Required:** the selected excerpts of the GitBook chapters **Loops** and **Inputs and Outputs** (the same ones from class).
+Each reading opens with a short real-world scenario in **§1**. **Always read §1 first**: it's the "why" for everything after it. Then read the sections below. Everything else (including **Go further**) is optional.
 
-Focus on:
-
-- `for` loops, `range()`, and loops over strings
-- `while` loops, `break`, `continue`, and running counts
-- String indexing, slicing, and methods (`strip`, `lower`, `startswith`, `find`, `replace`, `split`)
-- `input()`, type conversion, and `:.2f`
+| Reading | Read | Skip for now |
+|---|---|---|
+| [Loops](https://the-marcy-lab-school.github.io/SWE_Interactive_Readings/Mod1/05-loops/) | §1 scenario · §4 known count or unknown count · §5 `break`, `continue`, and loops with no way out · §6 running counts | §2–3, §7–9 (optional) |
+| [Inputs and Outputs](https://the-marcy-lab-school.github.io/SWE_Interactive_Readings/Mod1/06-inputs-and-outputs/) | §1 scenario · §3 strings, one character at a time · §5 `input()` · §6 turning input into the right type | §2, §4, §7–8 (optional) |
 
 **Think about:**
 
