@@ -1,9 +1,20 @@
-"""Neutral types and operators lab (not ParkPulse). Matches the Week 1 deck slides 17, 18, 19."""
+"""Week 1 practice 2: predict types and operator results before you run them.
 
-# PREDICT before running: for every print, write down the value AND its type.
+Practices: type(); / vs. // vs. %; "3" * 5; floating-point surprises;
+conversions with int(), str(), float(); == vs. is; and / or / not; in; TypeError.
+Matches the Week 1 deck slides 17, 18, 19. Neutral values (not ParkPulse).
 
+Run it:  python3 practice/02_types_operators.py
+It runs before you change anything.
 
-# 1. Data types: predict, then verify (slide 17)
+For each section: write your prediction (value AND type) on the
+"# Your prediction:" line or after "# prediction:", then fill in every `None`
+marked `# TODO`, run again, and compare.
+"""
+
+# --- A. Data types: predict, then verify (slide 17) ---
+# Predict: the type each line prints, for example <class 'str'>.
+# Your prediction:
 print(type("Coaster"))
 print(type(24))
 print(type(83.3))
@@ -13,22 +24,51 @@ print(type(["A", "B"]))
 print(type({"ride": "A"}))
 
 
-# 2. Operator drill (slide 18). Write your prediction in the comment first.
+# --- B. Operator drill (slide 18) ---
+# Predict: write the value and type after "prediction:" on each line.
 print(24 / 5)            # prediction:
 print(24 // 5)           # prediction:
 print(24 % 5)            # prediction:
 print("3" * 5)           # prediction:
+
+# A ride car holds 5 riders and 24 people are waiting.
+waiting = 24
+car_size = 5
+full_cars = None  # TODO: replace None with the expression that gives the number of FULL cars (use waiting and car_size)
+riders_left_over = None  # TODO: replace None with the expression that gives the riders left over (use waiting and car_size)
+print("full cars:", full_cars)
+print("riders left over:", riders_left_over)
+
+
+# --- C. Floating-point surprise (slide 18) ---
+# Predict: True or False? Then predict what 0.1 + 0.2 really prints.
 print(0.1 + 0.2 == 0.3)  # prediction:
 print(0.1 + 0.2)         # prediction:
+# Explain: why is the first line not what you might expect?
+# Your answer:
 
 
-# 3. Conversions
-print(int("7") + 3)
-print("7" + str(3))
-print(float("2.5") * 2)
+# --- D. Conversions ---
+# Predict: the value and type of each line.
+print(int("7") + 3)       # prediction:
+print("7" + str(3))       # prediction:
+print(float("2.5") * 2)   # prediction:
+
+# Predict: what error does "3" + 5 raise, and what does its last line say?
+# Your prediction:
+# Uncomment, predict the error, run, then re-comment.
+# print("3" + 5)
+
+# Fix "3" + 5 two ways:
+number_sum = None  # TODO: replace None with "3" + 5 rewritten using int() so Python adds two numbers
+text_join = None  # TODO: replace None with "3" + 5 rewritten using str() so Python joins two strings
+print("with int():", number_sum)
+print("with str():", text_join)
 
 
-# 4. Equality, identity, logic, membership (slide 19)
+# --- E. Equality, identity, logic, membership (slide 19) ---
+# Predict: True or False for each print in this section.
+# Your prediction:
 status = "open"
 is_open = True
 riders = 20
@@ -39,6 +79,8 @@ print(not is_open or riders == 0)
 print("coast" in "Coaster")
 print(note is None)
 
+# Predict: True or False for each of the last three prints.
+# Your prediction:
 first_list = ["A", "B"]
 same_list = first_list
 copy_list = ["A", "B"]
@@ -46,18 +88,14 @@ print(first_list == copy_list)
 print(first_list is copy_list)
 print(first_list is same_list)
 
+has_riders = None  # TODO: replace None with an expression that is True when is_open is True AND riders is more than 0
+print("open with riders:", has_riders)
 
-# A. Which printed line surprised you most? Explain it in one sentence.
-# B. Explain the difference between / and //. A ride car holds 5 riders and 24
-#    people are waiting: which operator gives the number of full cars, and which
-#    gives the riders left over?
-# C. Why is 0.1 + 0.2 == 0.3 False? What does the next print show you?
-# D. Why is "coast" in "Coaster" False?
-# E. Explain == versus is using the last three prints. JavaScript uses === for
-#    strict equality. What does Python use instead, and what does `is` check?
-# F. Rewrite the block 4 prints as JavaScript in a comment
-#    (and/or/not -> && || !). Then explain which version is easier to read.
-# G. TypeError: uncomment the next line, predict what happens, run, and read the
-#    last line of the error. Fix it two ways (with int() and with str()), then
-#    comment the original line back out.
-# print("3" + 5)
+# Explain: why is "coast" in "Coaster" False?
+# Your answer:
+# Explain: == versus is, using the last three list prints. JavaScript uses ===
+# for strict equality. What does Python use instead, and what does `is` check?
+# Your answer:
+# JavaScript: rewrite the five status/riders prints above as JavaScript
+# (and / or / not -> && || !). Which version is easier to read?
+# Your answer:
