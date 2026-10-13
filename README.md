@@ -204,7 +204,7 @@ Complete TODO 1–4 in the starter using the attraction data below. The same dat
 | Current riders | 20 | `int` |
 | Open | yes | `bool` (`True`) |
 | Utilization | current riders ÷ maximum capacity (20 / 24) | `float` (`0.8333333333333334`) |
-| Utilization as a percentage | utilization × 100 | `float` (`83.33333333333334`) |
+| Utilization shown as a percentage | format the fraction with `:.2%` in an f-string | printed as `83.33%` |
 
 ### Task A — Store the Attraction Data (TODO 1)
 
@@ -220,17 +220,24 @@ Before running it, write down the type and value you expect. Then check with `pr
 
 Use `print()` and f-strings to display a readable status message with the attraction name, its utilization as a percentage, and whether it is open.
 
+**Formatting a percentage:** inside an f-string, `{value:.2%}` multiplies by 100, rounds to 2 decimal places, and adds `%`. Use it on the fraction, not on a value you already multiplied by 100:
+
+```python
+utilization = 20 / 24
+print(f"Utilization: {utilization:.2%}")        # Utilization: 83.33%
+print(f"Utilization: {utilization * 100:.2%}")  # Utilization: 8333.33%  <- multiplied twice
+```
+
 **Done when:** `python3 src/parkpulse.py` prints all three values. Your wording can differ, but the values must match. For example:
 
 ```
 Ride: Sky Loop
 Open: True
 Capacity used: 20/24
-Utilization: 83.33333333333334%
+Utilization: 83.33%
 ```
 
-The long decimal is expected this week. You will learn to format it properly in Week 3.
-Optional preview (it's on the slides): `print(f"Utilization: {20 / 24:.2%}")` prints `Utilization: 83.33%` — `:.2%` multiplies by 100 for you, so use it on the fraction, not on a value you already multiplied.
+If you see `83.33333333333334%`, you printed the raw value; add the `:.2%` format spec. Week 3 adds more format specs (`:.2f`) and compares them with `round()`.
 
 ### Task D — Style Review (TODO 4)
 
