@@ -1,9 +1,21 @@
-"""Neutral scope and debugging lab (not ParkPulse). Matches the Week 2 deck slides 12, 16-19."""
+"""Week 2 practice 2: trace nested calls and follow names across scope.
 
-# PREDICT before running: write down every line this file prints.
+Practices: nested calls; local vs. global scope; reading NameError, TypeError,
+and UnboundLocalError.
+Matches the Week 2 deck slides 12, 16-19. Neutral examples (not ParkPulse).
+
+Run it:  python3 practice/02_scope.py
+It runs before you change anything.
+
+For each section: write your prediction on the "# Your prediction:" line,
+then fill in every `None` marked `# TODO`, run again, and compare.
+"""
 
 
-# 1. Nested calls (slide 12): which call runs first?
+# --- A. Nested calls: which call runs first? (slide 12) ---
+# Predict: the value after each call in double(add_one(4)), from the inside
+# out, and what the print shows.
+# Your prediction:
 def double(value):
     return value * 2
 
@@ -14,8 +26,16 @@ def add_one(value):
 
 print(double(add_one(4)))
 
+# Trace it one call at a time.
+inner_result = None  # TODO: replace None with the INNER call from the print above (just that call)
+print("inner call:", inner_result)
+# Uncomment after you fill in inner_result (double(None) crashes):
+# print("outer call:", double(inner_result))
 
-# 2. Local or global? (slide 16)
+
+# --- B. Local or global? (slide 16) ---
+# Predict: what do the two prints show? Why are they different?
+# Your prediction:
 message = "outside"
 
 
@@ -27,17 +47,42 @@ def show_message():
 print(show_message())
 print(message)
 
+# Name the scope of each `message`, as a string: "local" or "global".
+message_inside_function_scope = None  # TODO: replace None with the scope of message inside show_message()
+message_at_top_scope = None  # TODO: replace None with the scope of message = "outside"
+print("message in show_message():", message_inside_function_scope)
+print('message = "outside":', message_at_top_scope)
 
-# 3. NameError (slide 17)
+
+# --- C. NameError: where is the name created, and where is it used? (slide 17) ---
 def inspect_sample():
     observation = "ready"
     return observation
 
 
+# Predict: what does this print?
+# Your prediction:
 print(inspect_sample())
 
+# Predict: observation was created inside inspect_sample(). What happens if
+# you use it out here?
+# Your prediction:
+# Uncomment, predict the error, run, then re-comment.
+# print(observation)
 
-# 4. UnboundLocalError (slide 18)
+observation_value = None  # TODO: replace None with a call that gets observation's value without a NameError
+print("observation:", observation_value)
+
+
+# --- D. TypeError: wrong argument count (slide 19) ---
+# Predict: double takes one argument. What happens with two? Which part of
+# the error message tells you the cause?
+# Your prediction:
+# Uncomment, predict the error, run, then re-comment.
+# print(double(4, 5))
+
+
+# --- E. UnboundLocalError (slide 18) ---
 counter = 5
 
 
@@ -46,14 +91,24 @@ def adjust():
     return counter
 
 
-# A. Trace double(add_one(4)) from the inside out. Write the value after each call.
-# B. List every local variable in this file and the function it belongs to.
-# C. Explain why the two message lines print different values.
-# D. NameError: uncomment the next line, predict the error, run, then comment it back out.
-# print(observation)
-# E. TypeError: uncomment the next line. Which part of the message tells you the cause?
-# print(double(4, 5))
-# F. UnboundLocalError: uncomment the next line. Why does assigning counter inside
-#    adjust() make it local? Rewrite adjust() so it takes counter as a parameter
-#    and returns the new value.
+# Predict: counter is 5 out here. What happens when adjust() runs, and why
+# does assigning counter inside adjust() make it local?
+# Your prediction:
+# Uncomment, predict the error, run, then re-comment.
 # print(adjust())
+
+
+# The fix: take counter as a parameter and return the new value.
+def adjust_counter(counter):
+    """Return counter plus 1."""
+    return None  # TODO: replace None with the new value: counter plus 1
+
+
+# Predict: what do these two lines print after you fill in adjust_counter?
+# Does the global counter change?
+# Your prediction:
+print(adjust_counter(counter))
+print(counter)
+
+# Explain: list every local variable in this file and the function it belongs to.
+# Your answer:
