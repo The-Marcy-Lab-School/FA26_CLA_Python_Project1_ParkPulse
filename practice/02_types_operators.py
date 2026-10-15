@@ -2,7 +2,7 @@
 
 Practices: type(); / vs. // vs. %; "3" * 5; floating-point surprises;
 conversions with int(), str(), float(); == vs. is; and / or / not; in; TypeError.
-Matches the Week 1 deck slides 17, 18, 19. Neutral values (not ParkPulse).
+Matches the Week 1 deck slides 20, 21, 24, 27. Neutral values (not ParkPulse).
 
 Run it:  python3 practice/02_types_operators.py
 It runs before you change anything.
@@ -12,7 +12,7 @@ For each section: write your prediction (value AND type) on the
 marked `# TODO`, run again, and compare.
 """
 
-# --- A. Data types: predict, then verify (slide 17) ---
+# --- A. Data types: predict, then verify (slide 20) ---
 # Predict: the type each line prints, for example <class 'str'>.
 # Your prediction:
 print(type("Coaster"))
@@ -24,7 +24,7 @@ print(type(["A", "B"]))
 print(type({"ride": "A"}))
 
 
-# --- B. Operator drill (slide 18) ---
+# --- B. Operator drill (slide 21) ---
 # Predict: write the value and type after "prediction:" on each line.
 print(24 / 5)            # prediction:
 print(24 // 5)           # prediction:
@@ -40,7 +40,7 @@ print("full cars:", full_cars)
 print("riders left over:", riders_left_over)
 
 
-# --- C. Floating-point surprise (slide 18) ---
+# --- C. Floating-point surprise (slide 21) ---
 # Predict: True or False? Then predict what 0.1 + 0.2 really prints.
 print(0.1 + 0.2 == 0.3)  # prediction:
 print(0.1 + 0.2)         # prediction:
@@ -48,7 +48,7 @@ print(0.1 + 0.2)         # prediction:
 # Your answer:
 
 
-# --- D. Conversions ---
+# --- D. Conversions (slide 24) ---
 # Predict: the value and type of each line.
 print(int("7") + 3)       # prediction:
 print("7" + str(3))       # prediction:
@@ -66,7 +66,7 @@ print("with int():", number_sum)
 print("with str():", text_join)
 
 
-# --- E. Equality, identity, logic, membership (slide 19) ---
+# --- E. Equality, identity, logic, membership (slide 27) ---
 # Predict: True or False for each print in this section.
 # Your prediction:
 status = "open"

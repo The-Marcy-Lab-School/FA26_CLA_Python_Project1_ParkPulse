@@ -1,7 +1,7 @@
 """Week 1 practice 3: names, constants, and PEP 8 style.
 
 Practices: variables; ALL_CAPS constants; += and -=; snake_case; a PEP 8 rewrite.
-Matches the Week 1 deck slides 20, 21. Neutral example (a bus, not ParkPulse).
+Matches the Week 1 deck slides 30, 31, 32. Neutral example (a bus, not ParkPulse).
 
 Run it:  python3 practice/03_names_style.py
 It runs before you change anything.
@@ -10,7 +10,7 @@ For each section: write your prediction on the "# Your prediction:" line,
 then fill in every `None` marked `# TODO`, run again, and compare.
 """
 
-# --- A. Variables and augmented assignment (slide 20) ---
+# --- A. Variables and augmented assignment (slide 30) ---
 # Predict: the value current_passengers holds after EACH of the next three
 # lines, and the two lines this section prints.
 # Your prediction:
@@ -29,7 +29,7 @@ print("boarding:", boarding)
 # print("after the next stop:", current_passengers)
 
 
-# --- B. Constants are a naming convention (slide 20) ---
+# --- B. Constants are a naming convention (slide 30) ---
 # Predict: does Python allow MAX_SEATS to change? What does the next print show?
 # Your prediction:
 MAX_SEATS = 50
@@ -39,7 +39,7 @@ print(MAX_SEATS)
 # Your answer:
 
 
-# --- C. PEP 8: style is readability (slide 21) ---
+# --- C. PEP 8: style is readability (slides 31, 32) ---
 # This block runs, but it is hard to read.
 # Predict: the number it prints.
 # Your prediction:

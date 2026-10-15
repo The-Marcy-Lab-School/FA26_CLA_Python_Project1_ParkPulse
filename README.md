@@ -204,11 +204,11 @@ Act as a tutor. Do not give me the answer yet. Ask me what this Python expressio
 
 **Question:** "What is the difference between an expression and a statement in Python?"
 
-Answer in 60–90 seconds with Point → Reason → Evidence → Takeaway:
+Answer in 60–90 seconds with PREP: Point → Reason → Evidence → Point:
 
 - **Point:** one-sentence answer. **Reason:** why the difference matters.
 - **Evidence:** one line in `src/parkpulse.py` that produced a value (your utilization) or changed state (an assignment).
-- **Takeaway:** how the distinction helps you debug.
+- **Point:** restate your answer, then say how the distinction helps you debug.
 
 ## 7. Checklist
 

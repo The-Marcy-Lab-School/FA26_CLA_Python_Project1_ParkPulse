@@ -2,7 +2,7 @@
 
 Practices: default (top-to-bottom) control flow; comments vs. expressions vs.
 statements; print() and f-strings; reading a NameError.
-Matches the Week 1 deck slides 12, 14, 15. Neutral example (a bus, not ParkPulse).
+Matches the Week 1 deck slides 13, 15, 18. Neutral example (a bus, not ParkPulse).
 
 Run it:  python3 practice/01_trace_and_state.py
 It runs before you change anything.
@@ -11,7 +11,7 @@ For each section: write your prediction on the "# Your prediction:" line,
 then fill in every `None` marked `# TODO`, run again, and compare.
 """
 
-# --- A. Default control flow: Python runs the file top to bottom (slide 12) ---
+# --- A. Default control flow: Python runs the file top to bottom (slide 13) ---
 # Predict: write every line this section prints, in order.
 # Your prediction:
 print("start")
@@ -26,7 +26,7 @@ print("done")
 # Your prediction:
 
 
-# --- B. Three kinds of lines: comment, expression, statement (slide 14) ---
+# --- B. Three kinds of lines: comment, expression, statement (slide 15) ---
 # Predict: which of the next three lines prints something? What value does
 # print(passengers) show, and why not 30?
 # Your prediction:
@@ -47,7 +47,7 @@ print("passengers = passengers + 5:", assignment_kind)
 # Your answer:
 
 
-# --- C. print() and f-strings inspect state (slide 15) ---
+# --- C. print() and f-strings inspect state (slide 18) ---
 # Predict: write both lines this section prints.
 # Your prediction:
 print(f"{passengers}/{seats} seats used")
