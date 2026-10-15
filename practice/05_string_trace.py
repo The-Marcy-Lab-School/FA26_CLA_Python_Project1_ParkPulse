@@ -1,6 +1,6 @@
 """
 Week 3 practice 05: normalize a string, then index, slice, and inspect it.
-Neutral practice (not ParkPulse). Matches deck slides 20 and 22.
+Neutral practice (not ParkPulse). Matches deck slides 26 and 30.
 
 Run it:  python3 practice/05_string_trace.py
 It runs before you change anything.

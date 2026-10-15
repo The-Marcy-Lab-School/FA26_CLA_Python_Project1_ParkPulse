@@ -108,7 +108,7 @@ I'm testing a Python command-line menu. It accepts a menu choice from 1 to 5, a 
 **Question:** "How do you know your loop will terminate?" Answer in 60–90 seconds:
 - **Point:** which loop you used in `simulate_queue()` or `run_menu()`, and why. **Reason:** what changes each pass and which condition (or `break`) ends it.
 - **Evidence:** your 50-guest run went 50 → 26 → 2 → 0 in 3 cycles.
-- **Takeaway:** what would make it infinite (boarding 0 per cycle) and how your code prevents it.
+- **Point:** restate why it ends, then what would make it infinite (boarding 0 per cycle) and how your code prevents it.
 
 ## 7. Checklist
 

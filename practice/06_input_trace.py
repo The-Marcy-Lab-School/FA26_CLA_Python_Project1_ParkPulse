@@ -1,6 +1,6 @@
 """
 Week 3 practice 06: input() always returns text. Clean it, check it, then convert it.
-Neutral practice (not ParkPulse). Matches deck slide 21.
+Neutral practice (not ParkPulse). Matches deck slides 27 and 29.
 
 Run it:  python3 practice/06_input_trace.py
 It runs before you change anything. It asks you 5 questions; pressing Enter
