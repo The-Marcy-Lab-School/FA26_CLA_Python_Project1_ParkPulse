@@ -2,7 +2,7 @@
 
 Practices: if / elif / else; guard clauses; truthiness and `is None`;
 conditional expressions; rewriting nested ifs with guard clauses.
-Matches the Week 2 deck slides 23-26. Neutral examples (not ParkPulse).
+Matches the Week 2 deck slides 29-31, 34. Neutral examples (not ParkPulse).
 
 Run it:  python3 practice/03_decisions.py
 It runs before you change anything.
@@ -11,7 +11,7 @@ For each section: write your prediction on the "# Your prediction:" line,
 then fill in every `None` marked `# TODO`, run again, and compare.
 """
 
-# --- A. Which branch runs? (slide 23) ---
+# --- A. Which branch runs? (slide 29) ---
 # Predict: which word prints when temperature is 18?
 # Your prediction:
 temperature = 18
@@ -31,7 +31,7 @@ else:
 # Your answer:
 
 
-# --- B. Guard clause: less nesting (slide 24) ---
+# --- B. Guard clause: less nesting (slide 30) ---
 # Predict: what do the two prints show?
 # Your prediction:
 def reciprocal(value):
@@ -46,7 +46,7 @@ print(reciprocal(0))
 # Your answer:
 
 
-# --- C. Falsy versus missing (slide 25) ---
+# --- C. Falsy versus missing (slide 31) ---
 # Predict: True or False for each print?
 # Your prediction:
 reading = 0
@@ -61,7 +61,7 @@ print("reading is missing:", reading_is_missing)
 # Your answer:
 
 
-# --- D. Conditional expression (slide 26) ---
+# --- D. Conditional expression (slide 34) ---
 # Predict: which label prints?
 # Your prediction:
 score = 82

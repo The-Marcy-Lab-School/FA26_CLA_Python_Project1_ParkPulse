@@ -100,7 +100,7 @@ Suggest five unusual or boundary-case inputs that could test a Python ride eligi
 **Question:** "Why did you refactor that ParkPulse logic into a function?" Answer in 60–90 seconds:
 - **Point:** what you extracted. **Reason:** reuse, testing one rule at a time, clearer names.
 - **Evidence:** one function, one input, one result, e.g. `check_capacity(5, 0)` returning `None` instead of crashing.
-- **Takeaway:** how that structure improves correctness.
+- **Point:** restate what you extracted and how that structure improves correctness (PREP).
 
 ## 7. Checklist
 
