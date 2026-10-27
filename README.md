@@ -90,7 +90,7 @@ Complete the stubs below the Week 4 banner in `src/parkpulse.py`. Each docstring
 ## 5. Ship it (delivery week)
 
 ParkPulse is finished. Make your `main` look like a real project, not a course exercise.
-1. **Clean `src/`:** delete every `TODO`, banner (`# ===`), and `Think:` comment; keep real docstrings; no `pass` bodies left. This must print nothing:
+1. **Remove the TODO and instruction comments** from `src/`: every `TODO`, banner (`# ===`), and `Think:` line. Keep real docstrings, and leave no `pass` bodies. This must print nothing:
 ```bash
 grep -n "TODO" src/parkpulse.py
 ```
