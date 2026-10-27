@@ -501,3 +501,210 @@ def display_attraction_summary():
 # 6. A decimal height: 47.5
 # 7. A queue of 50 guests (3 cycles) and of 0 guests
 # 8. Exit with N, then exit with Y
+
+
+# ===================================================
+# PARKPULSE — WEEK 4: LISTS, REFERENCES & DELIVERY
+# ===================================================
+#
+# Keep all Week 1–3 code above.
+#
+# This week:
+# - Store the whole park as a list of tuples
+# - List, find, and filter attractions
+# - Write queue helpers that never change the
+#   caller's list (pure: copy first)
+# - Add menu option 5: List attractions
+#
+# Move your run_menu() call below this section so it
+# is still the LAST line of the file. A function must
+# be defined before the menu calls it.
+#
+# The values below match the Business Rules table
+# in the Week 4 README. No dictionaries yet (Week 5).
+
+
+# ---------------------------------------------------
+# FEATURE 10: PARK DATA
+# ---------------------------------------------------
+
+# TODO:
+# Replace the empty list with one tuple per attraction,
+# in this order: (name, max_capacity, current_riders, is_open)
+#
+#   Sky Loop       24 max, 20 riders, open
+#   River Rapids   16 max, 16 riders, open
+#   Pirate Drop    12 max,  3 riders, closed
+#   Comet Coaster  30 max, 12 riders, open
+#
+# Sky Loop's values match your Week 1 variables.
+
+ATTRACTIONS = []
+
+
+# ---------------------------------------------------
+# FEATURE 11: LIST, FIND, AND FILTER
+# ---------------------------------------------------
+
+def list_attractions(attractions):
+    """
+    Print one numbered line per attraction.
+
+    Parameters:
+        attractions: A list of
+            (name, max_capacity, current_riders, is_open) tuples.
+
+    Returns:
+        Nothing. It only prints.
+
+    Rules:
+        - Number from 1 with enumerate(attractions, start=1).
+        - Open attraction (status from check_capacity()):
+          f"{number}. {name}: {riders}/{max_capacity} riders ({status})"
+        - Closed attraction (no rider count):
+          f"{number}. {name}: closed"
+
+    Expected output for ATTRACTIONS:
+        1. Sky Loop: 20/24 riders (near capacity)
+        2. River Rapids: 16/16 riders (full)
+        3. Pirate Drop: closed
+        4. Comet Coaster: 12/30 riders (available)
+
+    TODO:
+        1. Loop with enumerate(attractions, start=1).
+        2. Unpack each tuple into four names.
+        3. Print the closed line or the open line.
+    """
+    pass
+
+
+def find_attraction(attractions, name):
+    """
+    Find one attraction by name.
+
+    Parameters:
+        attractions: The list of attraction tuples.
+        name: The name to look for. Ignore case and
+            surrounding spaces: "  river rapids " finds
+            "River Rapids".
+
+    Returns:
+        The matching tuple, or None if no name matches.
+
+    TODO:
+        1. Clean the name with .strip().lower().
+        2. Loop over the attractions and compare each
+           lowercased name.
+        3. Return the tuple as soon as one matches.
+        4. After the loop, return None.
+    """
+    pass
+
+
+def open_attraction_names(attractions):
+    """
+    List the names of the attractions that are open.
+
+    Parameters:
+        attractions: The list of attraction tuples.
+
+    Returns:
+        A NEW list of names, in the original order.
+        For ATTRACTIONS:
+        ['Sky Loop', 'River Rapids', 'Comet Coaster']
+
+    TODO:
+        1. Start an empty list.
+        2. Loop and unpack each tuple.
+        3. Append the name when is_open is True.
+        4. Return the new list.
+    """
+    pass
+
+
+# ---------------------------------------------------
+# FEATURE 12: PURE QUEUE HELPERS
+# ---------------------------------------------------
+
+def join_queue(queue, guest):
+    """
+    Add a guest to the end of a line, without changing it.
+
+    Parameters:
+        queue: A list of guest names.
+        guest: The name to add.
+
+    Returns:
+        A NEW list with guest at the end.
+        The caller's queue stays the same:
+            line = ["Ana", "Ben"]
+            new_line = join_queue(line, "Cy")
+            line     -> ['Ana', 'Ben']
+            new_line -> ['Ana', 'Ben', 'Cy']
+
+    TODO:
+        1. Copy the queue first.
+        2. Append the guest to the copy.
+        3. Return the copy.
+    """
+    pass
+
+
+def board_riders(queue, seats):
+    """
+    Split a line into who boards and who keeps waiting.
+
+    Parameters:
+        queue: A list of guest names, first in line first.
+        seats: How many guests can board.
+
+    Returns:
+        A tuple (boarding, still_waiting), both NEW lists.
+        The caller's queue stays the same:
+            board_riders(["Ana", "Ben", "Cy", "Dee", "Eli"], 3)
+            -> (['Ana', 'Ben', 'Cy'], ['Dee', 'Eli'])
+
+    TODO:
+        1. Slice the first `seats` guests.
+        2. Slice everyone after them.
+        3. Return both slices as a tuple.
+    """
+    pass
+
+
+# ---------------------------------------------------
+# FEATURE 13: MENU OPTION 5
+# ---------------------------------------------------
+
+# TODO:
+# Update your Week 3 menu functions (above):
+#
+# 1. get_menu_choice(): the prompt becomes
+#    "Choose an option (1-6): ", valid choices are "1"
+#    to "6", and the message becomes
+#    "Please enter a number from 1 to 6."
+# 2. run_menu(): the menu shows
+#        5. List attractions
+#        6. Exit
+#    Choice "5" calls list_attractions(ATTRACTIONS).
+#    Choice "6" does what "5" did in Week 3 (Exit + Y).
+
+
+# ---------------------------------------------------
+# WEEK 4: TESTING AND SHIPPING
+# ---------------------------------------------------
+
+# TODO:
+# Run python3 src/parkpulse.py and test each case.
+# Predict first.
+#
+# 1. Menu choice 5 (all four attractions print)
+# 2. Menu choice 6, then Y
+# 3. Menu choice 7 (invalid)
+# 4. A temporary print of find_attraction(ATTRACTIONS, "  sky loop ")
+# 5. A temporary print of join_queue() and board_riders(),
+#    then print the original list: it must not change
+#
+# Before you integrate into main, follow "Ship it" in
+# the README: delete every TODO and banner comment,
+# keep real docstrings, and replace pass with code.
