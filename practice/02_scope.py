@@ -2,7 +2,7 @@
 
 Practices: nested calls; local vs. global scope; reading NameError, TypeError,
 and UnboundLocalError.
-Matches the Week 2 deck slides 15, 18, 20-23. Neutral examples (not ParkPulse).
+Matches the Week 2 deck slides 17, 21, 23 and 26-28. Neutral examples (not ParkPulse).
 
 Run it:  python3 practice/02_scope.py
 It runs before you change anything.
@@ -12,7 +12,7 @@ then fill in every `None` marked `# TODO`, run again, and compare.
 """
 
 
-# --- A. Nested calls: which call runs first? (slide 15) ---
+# --- A. Nested calls: which call runs first? (slide 17) ---
 # Predict: the value after each call in double(add_one(4)), from the inside
 # out, and what the print shows.
 # Your prediction:
@@ -33,7 +33,7 @@ print("inner call:", inner_result)
 # print("outer call:", double(inner_result))
 
 
-# --- B. Local or global? (slide 20) ---
+# --- B. Local or global? (slide 23) ---
 # Predict: what do the two prints show? Why are they different?
 # Your prediction:
 message = "outside"
@@ -54,7 +54,7 @@ print("message in show_message():", message_inside_function_scope)
 print('message = "outside":', message_at_top_scope)
 
 
-# --- C. NameError: where is the name created, and where is it used? (slide 21) ---
+# --- C. NameError: where is the name created, and where is it used? (slide 26) ---
 def inspect_sample():
     observation = "ready"
     return observation
@@ -74,7 +74,7 @@ observation_value = None  # TODO: replace None with a call that gets observation
 print("observation:", observation_value)
 
 
-# --- D. TypeError: wrong argument count (slide 18) ---
+# --- D. TypeError: wrong argument count (slide 21) ---
 # Predict: double takes one argument. What happens with two? Which part of
 # the error message tells you the cause?
 # Your prediction:
@@ -82,7 +82,7 @@ print("observation:", observation_value)
 # print(double(4, 5))
 
 
-# --- E. UnboundLocalError (slides 22, 23) ---
+# --- E. UnboundLocalError (slides 27-28) ---
 counter = 5
 
 
