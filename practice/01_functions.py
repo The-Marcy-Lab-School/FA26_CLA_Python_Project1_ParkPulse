@@ -2,7 +2,7 @@
 
 Practices: def; parameters vs. arguments; default and keyword arguments;
 return values; print vs. return; a TypeError from a wrong argument count.
-Matches the Week 2 deck slides 12, 14-15, 18 and 21. Neutral examples (not ParkPulse).
+Matches the Week 2 deck slides 22, 24-25, 28 and 31. Neutral examples (not ParkPulse).
 
 Run it:  python3 practice/01_functions.py
 It runs before you change anything.
@@ -12,7 +12,7 @@ then fill in every `None` marked `# TODO`, run again, and compare.
 """
 
 
-# --- A. Define, call, return (slide 12) ---
+# --- A. Define, call, return (slide 22) ---
 # Predict: what does the print below show?
 # Your prediction:
 def add_tax(price, tax_rate):
@@ -29,7 +29,7 @@ print("first parameter:", first_parameter)
 print("first argument:", first_argument)
 
 
-# --- B. Defaults and keyword arguments (slide 18) ---
+# --- B. Defaults and keyword arguments (slide 28) ---
 # Predict: what do the two prints show? What changes when prefix is omitted,
 # and when it is passed by keyword?
 # Your prediction:
@@ -44,7 +44,7 @@ my_greeting = None  # TODO: replace None with a call to label() that passes your
 print(my_greeting)
 
 
-# --- C. Print versus return (slides 14-15) ---
+# --- C. Print versus return (slides 24-25) ---
 # Predict: show_total(10) prints a line. What does print(result) show after it, and why?
 # Your prediction:
 def show_total(price):
@@ -79,7 +79,7 @@ print(your_function(4))
 print(your_function(10))
 
 
-# --- E. Wrong argument count: TypeError (slide 21) ---
+# --- E. Wrong argument count: TypeError (slide 31) ---
 # Predict: add_tax needs two arguments. What happens when it gets one?
 # Which part of the last line of the error tells you the cause?
 # Your prediction:
