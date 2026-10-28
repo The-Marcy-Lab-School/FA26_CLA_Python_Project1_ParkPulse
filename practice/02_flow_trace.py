@@ -1,6 +1,6 @@
 """
 Week 3 practice 02: trace break and continue inside a loop.
-Neutral practice (not ParkPulse). Matches deck slides 17 and 19.
+Neutral practice (not ParkPulse). Matches deck slides 20 and 22.
 
 Run it:  python3 practice/02_flow_trace.py
 It runs before you change anything.

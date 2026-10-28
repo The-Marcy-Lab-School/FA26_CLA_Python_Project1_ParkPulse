@@ -1,6 +1,6 @@
 """
 Week 3 practice 01: trace for loops, range(), and a running total.
-Neutral practice (not ParkPulse). Matches deck slides 1 and 16.
+Neutral practice (not ParkPulse). Matches deck slides 1 and 18.
 
 Run it:  python3 practice/01_loop_trace.py
 It runs before you change anything.

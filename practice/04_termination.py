@@ -1,6 +1,6 @@
 """
 Week 3 practice 04: why a while loop ends (or doesn't).
-Neutral practice (not ParkPulse). Matches deck slides 21 and 22.
+Neutral practice (not ParkPulse). Matches deck slides 26-27.
 
 Run it:  python3 practice/04_termination.py
 It runs before you change anything.

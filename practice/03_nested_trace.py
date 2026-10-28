@@ -1,6 +1,6 @@
 """
 Week 3 practice 03: count the work in a nested loop.
-Neutral practice (not ParkPulse). Matches deck slide 20.
+Neutral practice (not ParkPulse). Matches deck slide 24.
 
 Run it:  python3 practice/03_nested_trace.py
 It runs before you change anything.

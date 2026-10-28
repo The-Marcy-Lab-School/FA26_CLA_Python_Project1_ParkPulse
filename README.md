@@ -53,8 +53,8 @@ git push -u origin Week_3
 ## 2. Readings
 
 Every reading opens with a real-world scenario in §1 — always start there.
-- **Read:** [Loops](https://the-marcy-lab-school.github.io/SWE_Interactive_Readings/Mod1/05-loops/) — §1 scenario, §2 vocabulary, §4 known vs unknown count, §5 `break`/`continue`, §6 running count.
-- **Skim:** [Inputs and Outputs](https://the-marcy-lab-school.github.io/SWE_Interactive_Readings/Mod1/06-inputs-and-outputs/) — §1 scenario, §2 vocabulary, glance at §6 turning input into the right type.
+- **Read:** [Loops](https://the-marcy-lab-school.github.io/SWE_Interactive_Readings/Mod1/06-loops/) — §1 scenario, §2 vocabulary, §4 known vs unknown count, §5 `break`/`continue`, §6 running count.
+- **Skim:** [Strings, Inputs and Outputs](https://the-marcy-lab-school.github.io/SWE_Interactive_Readings/Mod1/05-strings-inputs-and-outputs/) — §1 scenario, §2 vocabulary, glance at §6 turning input into the right type.
 
 Everything else is optional. **Think about:** (1) When should a program use a `for` loop instead of a `while` loop? (2) What stops a loop, and what makes one run forever? (3) Why does user input need validation before conversion?
 

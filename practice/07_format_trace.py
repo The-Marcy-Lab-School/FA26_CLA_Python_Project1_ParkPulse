@@ -1,6 +1,6 @@
 """
 Week 3 practice 07: what you display vs what you store (:.2f vs round()), plus print's sep and end.
-Neutral practice (not ParkPulse). Matches deck slides 30 and 31.
+Neutral practice (not ParkPulse). Matches deck slides 32 and 38.
 
 Run it:  python3 practice/07_format_trace.py
 It runs before you change anything.
