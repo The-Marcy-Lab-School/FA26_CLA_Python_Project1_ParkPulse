@@ -2,7 +2,7 @@
 
 Practices: nested calls; local vs. global scope; reading NameError, TypeError,
 and UnboundLocalError.
-Matches the Week 2 deck slides 34, 38, 40 and 43-45. Neutral examples (not ParkPulse).
+Matches the Week 2 deck slides 34, 38, 42 and 45-47. Neutral examples (not ParkPulse).
 
 Run it:  python3 practice/02_scope.py
 It runs before you change anything.
@@ -33,7 +33,7 @@ print("inner call:", inner_result)
 # print("outer call:", double(inner_result))
 
 
-# --- B. Local or global? (slide 40) ---
+# --- B. Local or global? (slide 42) ---
 # Predict: what do the two prints show? Why are they different?
 # Your prediction:
 message = "outside"
@@ -54,7 +54,7 @@ print("message in show_message():", message_inside_function_scope)
 print('message = "outside":', message_at_top_scope)
 
 
-# --- C. NameError: where is the name created, and where is it used? (slide 43) ---
+# --- C. NameError: where is the name created, and where is it used? (slide 45) ---
 def inspect_sample():
     observation = "ready"
     return observation
@@ -82,7 +82,7 @@ print("observation:", observation_value)
 # print(double(4, 5))
 
 
-# --- E. UnboundLocalError (slides 44-45) ---
+# --- E. UnboundLocalError (slides 46-47) ---
 counter = 5
 
 
