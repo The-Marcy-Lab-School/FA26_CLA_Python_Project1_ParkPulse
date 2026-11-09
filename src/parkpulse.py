@@ -16,42 +16,42 @@ Attraction data:
 - Open: yes
 """
 
-# TODO 1:
-# Store the attraction data above in clearly named variables.
-#
-# Think about:
-# - Which Python data type fits each value?
-# - Which names follow snake_case?
-# - Which value should be represented as a boolean?
+# Step 1: store the attraction data in snake_case variables.
+# str for the name, int for the rider counts, bool for open/closed.
+ride_name = "Sky Loop"
+max_capacity = 24
+current_riders = 20
+is_open = True
 
 
-# TODO 2:
-# Calculate the attraction's utilization.
-#
-# Utilization means:
-# current riders divided by maximum capacity
-#
-# Before running your code, predict the type and value
-# of the expression you write.
+# Step 2: calculate utilization (current riders divided by maximum capacity).
+# Week 2 Task A moved the calculation into a function that RETURNS the value.
+def calculate_utilization(riders, capacity):
+    """
+    Return the share of seats in use, as a float.
+
+    Parameters:
+        riders: Current rider count.
+        capacity: Maximum allowed riders.
+
+    Returns:
+        riders / capacity (20 / 24 -> 0.8333333333333334).
+    """
+    return riders / capacity
 
 
-# TODO 3:
-# Use print() and an f-string to display a readable status message.
-#
-# Your message should include:
-# - the attraction name
-# - its utilization as a percentage
-# - whether the attraction is open
+utilization = calculate_utilization(current_riders, max_capacity)
 
+# Step 3: display a readable status message.
+# :.2% multiplies the fraction by 100, rounds to 2 decimals, and adds %.
+print(f"Ride: {ride_name}")
+print(f"Open: {is_open}")
+print(f"Capacity used: {current_riders}/{max_capacity}")
+print(f"Utilization: {utilization:.2%}")
 
-# TODO 4:
-# Review your code before you finish.
-#
-# Check:
-# - snake_case variable names
-# - spaces around operators
-# - four-space indentation if you use indentation
-# - no unnecessary semicolons or braces
+# Step 4: style review (PEP 8).
+# snake_case names, spaces around operators, one statement per line,
+# no semicolons or braces.
 
 
 # ===================================================
@@ -66,11 +66,11 @@ Attraction data:
 # - Use conditional statements and guard clauses
 # - Preserve working Week 1 functionality
 #
-# TODO: Integrate new functions into your
-# existing ParkPulse application.
-#
 # The rule values below match the Business Rules
 # table in the Week 2 README.
+
+sky_loop_min_height = 48
+adult_base_price = 60.00
 
 
 # ---------------------------------------------------
@@ -95,14 +95,14 @@ def check_ride_eligibility(visitor_height, minimum_height):
           (exactly 48 inches on Sky Loop is eligible)
         - visitor_height < minimum_height -> False
         - either value is None, 0, or negative -> None
-
-    TODO:
-        1. Handle missing inputs.
-        2. Identify invalid values.
-        3. Apply the eligibility rule above.
-        4. Return the result.
     """
-    pass
+    if visitor_height is None or minimum_height is None:
+        return None
+    if visitor_height <= 0 or minimum_height <= 0:
+        return None
+    if visitor_height >= minimum_height:
+        return True
+    return False
 
 
 # ---------------------------------------------------
@@ -129,18 +129,18 @@ def calculate_ticket_price(ticket_type, base_price):
         - "senior" -> 75% of base_price   ($45.00)
         - any other ticket_type -> None
         - base_price is None, 0, or negative -> None
-
-    TODO:
-        1. Validate the provided inputs.
-        2. Identify the required pricing categories.
-        3. Apply the pricing rules above.
-        4. Return the calculated result.
-
-    Consider:
-        Would a guard clause help?
-        Would if/elif/else clarify the logic?
     """
-    pass
+    if base_price is None or base_price <= 0:
+        return None
+
+    if ticket_type == "adult":
+        return base_price
+    elif ticket_type == "child":
+        return base_price * 0.5
+    elif ticket_type == "senior":
+        return base_price * 0.75
+    else:
+        return None
 
 
 # ---------------------------------------------------
@@ -169,52 +169,51 @@ def check_capacity(current_riders, max_capacity):
         - utilization of 80% or more -> "near capacity"
           (Sky Loop at 20 of 24 riders = 83%)
         - otherwise -> "available"
-
-    TODO:
-        1. Review the Week 1 capacity calculations.
-        2. Decide which existing work can be reused.
-        3. Protect against invalid values.
-        4. Apply the capacity rules above.
-        5. Return the result.
-
-    Important:
-        Preserve your working Week 1 behavior.
     """
-    pass
+    if max_capacity is None or max_capacity <= 0:
+        return None
+    if current_riders is None or current_riders < 0:
+        return None
+    if current_riders > max_capacity:
+        return None
+
+    if current_riders == max_capacity:
+        return "full"
+    if calculate_utilization(current_riders, max_capacity) >= 0.8:
+        return "near capacity"
+    return "available"
 
 
 # ---------------------------------------------------
 # FEATURE 4: FUNCTION INTEGRATION
 # ---------------------------------------------------
 
-# TODO:
-# Identify where the existing ParkPulse application
-# should call each new function.
-#
-# Consider:
-# - What arguments should be passed?
-# - Where should returned values be stored?
-# - Which code displays results?
-# - Which functions can be reused?
-#
-# Do not duplicate your Week 1 entry point.
-# Do not add Week 3 interactive menus or loops.
+# Done: call each Week 2 function once for Sky Loop and
+# show the results under the Week 1 message.
+capacity_status = check_capacity(current_riders, max_capacity)
+adult_price = calculate_ticket_price("adult", adult_base_price)
+eligible_at_min = check_ride_eligibility(48, sky_loop_min_height)
+
+print(f"Capacity status: {capacity_status}")
+print(f"Adult ticket: ${adult_price:.2f}")
+print(f"Eligible at 48 inches: {eligible_at_min}")
 
 
 # ---------------------------------------------------
 # WEEK 2: EDGE-CASE NOTES
 # ---------------------------------------------------
 
-# TODO:
-# Predict what should happen when:
+# Done: predictions checked against the actual behavior.
 #
-# 1. A required input is None.
-# 2. A numeric input is negative.
-# 3. A capacity value is zero.
-# 4. A visitor is exactly at an eligibility boundary.
-# 5. An unrecognized ticket category is supplied.
-#
-# Compare predictions with actual behavior.
+# 1. A required input is None -> every rule function returns None.
+# 2. A numeric input is negative -> None
+#    (check_ride_eligibility(-3, 48), check_capacity(-1, 24)).
+# 3. A capacity value is zero -> check_capacity(5, 0) returns None
+#    with no ZeroDivisionError, because the guard runs before dividing.
+# 4. A visitor exactly at the boundary -> check_ride_eligibility(48, 48)
+#    returns True (>= includes 48).
+# 5. An unrecognized ticket category -> calculate_ticket_price("vip", 60.00)
+#    returns None.
 
 
 # ===================================================
@@ -232,6 +231,8 @@ def check_capacity(current_riders, max_capacity):
 # Reuse your Week 1 variables and Week 2 functions.
 # The values below match the Business Rules table
 # in the Week 3 README.
+
+minutes_per_cycle = 5
 
 
 # ---------------------------------------------------
@@ -256,15 +257,16 @@ def get_menu_choice():
         - Anything else ("", "6", "3.0", "exit"):
           print "Please enter a number from 1 to 5."
           and return None.
-
-    TODO:
-        1. Read input with the prompt above.
-        2. Remove surrounding whitespace.
-        3. Check whether the choice is valid.
-        4. Return the choice, or print the message
-           and return None.
     """
-    pass
+    choice = input("Choose an option (1-5): ").strip()
+
+    # One character long AND one of the digits 1-5.
+    # The length check stops "12" or "" from matching.
+    if len(choice) == 1 and choice in "12345":
+        return choice
+
+    print("Please enter a number from 1 to 5.")
+    return None
 
 
 def get_yes_no(prompt):
@@ -286,14 +288,16 @@ def get_yes_no(prompt):
         - anything else ("", "maybe", "yep"):
           print "Please answer Y or N."
           and return None
-
-    TODO:
-        1. Read input using the prompt parameter.
-        2. Normalize it with .strip() and .lower().
-        3. Return True, False, or None using the
-           rules above.
     """
-    pass
+    answer = input(prompt).strip().lower()
+
+    if answer == "y" or answer == "yes":
+        return True
+    if answer == "n" or answer == "no":
+        return False
+
+    print("Please answer Y or N.")
+    return None
 
 
 def get_numeric_input(prompt):
@@ -320,18 +324,18 @@ def get_numeric_input(prompt):
           print "Too many invalid entries."
           and return None.
 
-    TODO:
-        1. Use a loop that runs at most 3 times.
-        2. Read and clean the input each time.
-        3. Validate BEFORE converting.
-        4. Return the int as soon as one entry is valid.
-        5. After the loop, print the message and
-           return None.
-
-    Think:
-        How do you know this loop always ends?
+    Why this loop always ends:
+        range(3) gives it at most 3 passes, and a valid
+        entry returns early.
     """
-    pass
+    for attempt in range(3):
+        entry = input(prompt).strip()
+        if entry.isdigit():
+            return int(entry)
+        print("Please enter a whole number (0 or more).")
+
+    print("Too many invalid entries.")
+    return None
 
 
 # ---------------------------------------------------
@@ -374,16 +378,49 @@ def run_menu():
                  False/None  -> go back to the menu
         None (invalid choice) -> go back to the menu
                (get_menu_choice() already printed the message)
-
-    TODO:
-        1. Choose the loop: it must repeat until
-           the user confirms Exit.
-        2. Print the menu and get the choice.
-        3. Use continue for an invalid choice.
-        4. Handle each choice with if/elif.
-        5. Use break when the user confirms Exit.
     """
-    pass
+    # while True: we can't know in advance how many times the user
+    # will pick an option. The loop ends only at the break (Exit + Y).
+    while True:
+        print()
+        print("ParkPulse — Sky Loop")
+        print("1. Show attraction summary")
+        print("2. Check ride eligibility")
+        print("3. Price a ticket")
+        print("4. Simulate the queue")
+        print("5. Exit")
+
+        choice = get_menu_choice()
+        if choice is None:
+            continue
+
+        if choice == "1":
+            display_attraction_summary()
+        elif choice == "2":
+            height = get_numeric_input("Visitor height in inches: ")
+            if height is None:
+                continue
+            eligible = check_ride_eligibility(height, sky_loop_min_height)
+            if eligible is None:
+                print("Height must be more than 0 inches.")
+            elif eligible:
+                print("Eligible to ride Sky Loop.")
+            else:
+                print("Not tall enough: Sky Loop requires 48 inches.")
+        elif choice == "3":
+            ticket_type = input("Ticket type (adult/child/senior): ")
+            ticket_type = ticket_type.strip().lower()
+            price = calculate_ticket_price(ticket_type, adult_base_price)
+            if price is None:
+                print("Unknown ticket type. Choose adult, child, or senior.")
+            else:
+                print(f"{ticket_type} ticket: ${price:.2f}")
+        elif choice == "4":
+            simulate_queue()
+        elif choice == "5":
+            if get_yes_no("Exit ParkPulse? [Y/N]: "):
+                print("Goodbye!")
+                break
 
 
 # ---------------------------------------------------
@@ -417,19 +454,37 @@ def simulate_queue():
         Cycle 3: 2 board (available), 0 still waiting
         Line cleared. Ride cycles: 3. Total time: 15 minutes.
 
-    TODO:
-        1. Track the state: guests waiting, cycle count.
-        2. Choose the loop and its stopping condition.
-        3. Each cycle: work out how many board, update
-           the guests waiting, and count the cycle.
-        4. Reuse check_capacity() for the status.
-        5. Print each cycle, then the final line.
-
-    Think:
-        Which value gets smaller on every pass?
-        What prevents an infinite loop?
+    Why this loop always ends:
+        waiting gets smaller on every pass, because at least
+        1 guest boards (waiting > 0 and max_capacity is 24).
     """
-    pass
+    waiting = get_numeric_input("Guests in line: ")
+    if waiting is None:
+        return
+    if waiting == 0:
+        print("No one is waiting.")
+        return
+
+    cycles = 0
+    while waiting > 0:
+        if waiting >= max_capacity:
+            boarding = max_capacity
+        else:
+            boarding = waiting
+        waiting = waiting - boarding
+        cycles = cycles + 1
+
+        status = check_capacity(boarding, max_capacity)
+        print(
+            f"Cycle {cycles}: {boarding} board ({status}), "
+            f"{waiting} still waiting"
+        )
+
+    minutes = cycles * minutes_per_cycle
+    print(
+        f"Line cleared. Ride cycles: {cycles}. "
+        f"Total time: {minutes} minutes."
+    )
 
 
 # ---------------------------------------------------
@@ -460,54 +515,54 @@ def display_attraction_summary():
         - Capacity: the string check_capacity() returns.
         - Prices: from calculate_ticket_price(..., 60.00),
           shown with :.2f (two decimal places).
-
-    TODO:
-        1. Reuse the Week 1 variables.
-        2. Call your Week 2 functions for the
-           capacity status and prices.
-        3. Format the numbers with f-strings.
-        4. Print the lines above.
     """
-    pass
+    if is_open:
+        open_text = "yes"
+    else:
+        open_text = "no"
 
+    utilization = calculate_utilization(current_riders, max_capacity)
+    status = check_capacity(current_riders, max_capacity)
+    adult = calculate_ticket_price("adult", adult_base_price)
+    child = calculate_ticket_price("child", adult_base_price)
+    senior = calculate_ticket_price("senior", adult_base_price)
 
-# ---------------------------------------------------
-# FEATURE 9: APPLICATION INTEGRATION
-# ---------------------------------------------------
-
-# TODO:
-# Start the menu: call run_menu() once, as the
-# last line of this file (below all the functions).
-#
-# Your Week 1 status message and any Week 2 test
-# prints will still show first. Then the menu starts.
-# Choosing 5 and answering Y ends the program.
+    print(f"{ride_name} summary")
+    print(f"  Open: {open_text}")
+    print(f"  Riders: {current_riders} of {max_capacity}")
+    print(f"  Utilization: {utilization:.2%}")
+    print(f"  Capacity: {status}")
+    print(
+        f"  Tickets: adult ${adult:.2f}, child ${child:.2f}, "
+        f"senior ${senior:.2f}"
+    )
 
 
 # ---------------------------------------------------
 # WEEK 3: TESTING AND DEBUGGING
 # ---------------------------------------------------
 
-# TODO:
-# Run python3 src/parkpulse.py and test each case.
-# Predict first, then compare with the README
-# "Done when" sessions.
+# Done: each case tested with python3 src/parkpulse.py.
 #
-# 1. A valid menu choice: 1
-# 2. An invalid menu choice: 9
-# 3. An empty menu choice (just press Enter)
-# 4. Exit with " y " (spaces and lowercase)
-# 5. A negative height: -3
-# 6. A decimal height: 47.5
-# 7. A queue of 50 guests (3 cycles) and of 0 guests
-# 8. Exit with N, then exit with Y
+# 1. 1        -> the six-line Sky Loop summary.
+# 2. 9        -> "Please enter a number from 1 to 5.", menu again.
+# 3. Enter    -> same message, menu again.
+# 4. 5 then " y " -> "Goodbye!" (strip + lower make it "y").
+# 5. 2 then -3     -> "Please enter a whole number (0 or more)."
+#    ("-" is not a digit), asks again.
+# 6. 2 then 47.5   -> same message ("." is not a digit), asks again.
+# 7. 4 then 50 -> 3 cycles, 15 minutes. 4 then 0 -> "No one is waiting."
+# 8. 5 then N -> menu again; 5 then Y -> "Goodbye!"
 
 
 # ===================================================
 # PARKPULSE — WEEK 4: LISTS, REFERENCES & DELIVERY
 # ===================================================
 #
-# Keep all Week 1–3 code above.
+# Weeks 1–3 are filled in above, so this week you
+# only write Week 4 code. Reuse these names:
+#   check_capacity(), get_menu_choice(), run_menu(),
+#   simulate_queue(), display_attraction_summary()
 #
 # This week:
 # - Store the whole park as a list of tuples
@@ -516,9 +571,9 @@ def display_attraction_summary():
 #   caller's list (pure: copy first)
 # - Add menu option 5: List attractions
 #
-# Move your run_menu() call below this section so it
-# is still the LAST line of the file. A function must
-# be defined before the menu calls it.
+# run_menu() is called once, as the LAST line of the
+# file (below this section), so every function is
+# defined before the menu calls it.
 #
 # The values below match the Business Rules table
 # in the Week 4 README. No dictionaries yet (Week 5).
@@ -708,3 +763,10 @@ def board_riders(queue, seats):
 # Before you integrate into main, follow "Ship it" in
 # the README: delete every TODO and banner comment,
 # keep real docstrings, and replace pass with code.
+
+
+# ---------------------------------------------------
+# START THE APP (keep this as the last line)
+# ---------------------------------------------------
+
+run_menu()
