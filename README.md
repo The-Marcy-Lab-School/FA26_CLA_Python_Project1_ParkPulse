@@ -13,6 +13,8 @@ ParkPulse helps amusement park staff check an attraction's capacity and status. 
 
 ## 1. Get the Week 3 starter
 
+**Already did this at the end of the Week 2 deck?** Skip to Section 2.
+
 **1.** In your `parkpulse` folder (with `.venv` active), start from your up-to-date `main` and create your branch. Run each command by itself:
 ```bash
 git switch main
@@ -29,11 +31,11 @@ git fetch upstream Week_3
 ```
 **You should see:** a line ending in `Week_3 -> FETCH_HEAD` (or `upstream/Week_3`).
 
-**4.** Copy this README and the practice files:
+**4.** Copy this README:
 ```bash
-git restore --source upstream/Week_3 -- README.md practice/
+git restore --source upstream/Week_3 -- README.md
 ```
-**You should see:** no output, and the Week 3 files in `practice/`.
+**You should see:** no output.
 
 **5.** Add the new starter code (don't restore the whole file; it would erase your Week 1–2 code). Print the school's file, copy from the `# ===` line above `# PARKPULSE — WEEK 3` to the end, and paste it at the end of your `src/parkpulse.py`:
 ```bash
@@ -43,9 +45,9 @@ git --no-pager show upstream/Week_3:src/parkpulse.py
 ```bash
 git status
 ```
-**You should see:** `modified: README.md`, `modified: src/parkpulse.py`, and `practice/` changes. No `.venv/`.
+**You should see:** `modified: README.md` and `modified: src/parkpulse.py`. No `.venv/`.
 ```bash
-git add README.md practice/ src/parkpulse.py
+git add README.md src/parkpulse.py
 git commit -m "Add Week 3 starter materials"
 git push -u origin Week_3
 ```
@@ -58,10 +60,10 @@ Every reading opens with a real-world scenario in §1 — always start there.
 
 Everything else is optional. **Think about:** (1) When should a program use a `for` loop instead of a `while` loop? (2) What stops a loop, and what makes one run forever? (3) Why does user input need validation before conversion?
 
-## 3. Practice
+## 3. In class: concept, your turn, answer
 
-Open each file in `practice/`, run it (`python3 practice/<file>.py`), then fill in every `None` and complete every `# TODO`. Predict before you run. (`06_input_trace.py` asks for input; pressing Enter is fine.)
-Files: `practice/01_loop_trace.py` · `practice/02_flow_trace.py` · `practice/03_nested_trace.py` · `practice/04_termination.py` · `practice/05_string_trace.py` · `practice/06_input_trace.py` · `practice/07_format_trace.py`
+There are no practice files this week. Every concept in the deck has a **Your turn** slide (code with a `# TODO` comment) and an **Answer** slide. Then you build the tasks below in breakout rooms and teach the class what to type.
+If you restored `practice/` last class, you can delete it: `git rm -r practice` (it never goes to `main`).
 
 ## 4. ParkPulse — Week 3 tasks
 
@@ -96,9 +98,11 @@ Line cleared. Ride cycles: 3. Total time: 15 minutes.
 **Task E — Test.** Run the 8 cases in the `WEEK 3: TESTING AND DEBUGGING` comment, predicting each first.
 - **Done when:** no input (empty, spaces, letters, negatives, decimals) crashes the program, and your Week 1–2 output is unchanged.
 
-## 5. AI activity
+## 5. Use AI while you build
 
-Copy this prompt, then for each suggestion **predict** what your program will do, **run** it, and **decide** whether the AI was right (if your program broke, fix it and note which assumption failed):
+AI is a partner, not the author. **Ask AI to:** explain an error message in plain words, list unusual inputs to test, or check one of your functions against a README rule (point to the line, don't rewrite it). **You still:** write each line yourself, predict before you run every suggestion, and explain any line you keep.
+
+Try it on Task E. Copy this prompt, then for each suggestion **predict** what your program will do, **run** it, and **decide** whether the AI was right (if your program broke, fix it and note which assumption failed):
 ```text
 I'm testing a Python command-line menu. It accepts a menu choice from 1 to 5, a Y/N answer, and a whole number of guests (0 or more). Suggest 8 unusual or hostile things a user might type that could break input validation or make a loop run forever. For each one, say what you think could go wrong. Do not write any code.
 ```
@@ -107,28 +111,22 @@ I'm testing a Python command-line menu. It accepts a menu choice from 1 to 5, a 
 
 **Question:** "How do you know your loop will terminate?" Answer in 60–90 seconds:
 - **Point:** which loop you used in `simulate_queue()` or `run_menu()`, and why. **Reason:** what changes each pass and which condition (or `break`) ends it.
-- **Evidence:** your 50-guest run went 50 → 26 → 2 → 0 in 3 cycles.
+- **Evidence:** proof, not a claim (CLA Technical Communication, Week 3): your 50-guest run went 50 → 26 → 2 → 0 in 3 cycles.
 - **Point:** restate why it ends, then what would make it infinite (boarding 0 per cycle) and how your code prevents it.
 
 ## 7. Checklist
 
 - [ ] I started `Week_3` from `main` and kept my Week 1–2 code.
-- [ ] I did the readings and all 7 practice files.
+- [ ] I did the readings and each Your turn slide in class.
 - [ ] Tasks A–D: input is validated, the menu repeats until Exit + Y, and the queue run and summary match.
 - [ ] Task E: no input crashes the program, and I tested the AI's hostile inputs.
-- [ ] My work is pushed to `Week_3` and `src/parkpulse.py` is integrated into `main`.
+- [ ] My work is pushed to `Week_3`.
 
-## 8. Commit, push, and integrate into main
+## 8. Commit and push
 
-Push your work, then (after your instructor signs off) bring **only** `src/parkpulse.py` into `main`. Never move `README.md` or `practice/` to `main`.
+Push your work to `Week_3`. Don't merge into `main` this week: Week 4 starts from this branch, and the last ParkPulse session brings everything into `main`.
 ```bash
-git add README.md practice/ src/parkpulse.py
+git add README.md src/parkpulse.py
 git commit -m "Complete Week 3 interactive ParkPulse"
 git push origin Week_3
-git switch main
-git pull --ff-only origin main
-git restore --source Week_3 -- src/parkpulse.py
-git add src/parkpulse.py
-git commit -m "Integrate Week 3 ParkPulse application"
-git push origin main
 ```
