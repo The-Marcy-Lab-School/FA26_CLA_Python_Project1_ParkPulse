@@ -16,42 +16,42 @@ Attraction data:
 - Open: yes
 """
 
-# TODO 1:
-# Store the attraction data above in clearly named variables.
-#
-# Think about:
-# - Which Python data type fits each value?
-# - Which names follow snake_case?
-# - Which value should be represented as a boolean?
+# Step 1: store the attraction data in snake_case variables.
+# str for the name, int for the rider counts, bool for open/closed.
+ride_name = "Sky Loop"
+max_capacity = 24
+current_riders = 20
+is_open = True
 
 
-# TODO 2:
-# Calculate the attraction's utilization.
-#
-# Utilization means:
-# current riders divided by maximum capacity
-#
-# Before running your code, predict the type and value
-# of the expression you write.
+# Step 2: calculate utilization (current riders divided by maximum capacity).
+# Week 2 Task A moved the calculation into a function that RETURNS the value.
+def calculate_utilization(riders, capacity):
+    """
+    Return the share of seats in use, as a float.
+
+    Parameters:
+        riders: Current rider count.
+        capacity: Maximum allowed riders.
+
+    Returns:
+        riders / capacity (20 / 24 -> 0.8333333333333334).
+    """
+    return riders / capacity
 
 
-# TODO 3:
-# Use print() and an f-string to display a readable status message.
-#
-# Your message should include:
-# - the attraction name
-# - its utilization as a percentage
-# - whether the attraction is open
+utilization = calculate_utilization(current_riders, max_capacity)
 
+# Step 3: display a readable status message.
+# :.2% multiplies the fraction by 100, rounds to 2 decimals, and adds %.
+print(f"Ride: {ride_name}")
+print(f"Open: {is_open}")
+print(f"Capacity used: {current_riders}/{max_capacity}")
+print(f"Utilization: {utilization:.2%}")
 
-# TODO 4:
-# Review your code before you finish.
-#
-# Check:
-# - snake_case variable names
-# - spaces around operators
-# - four-space indentation if you use indentation
-# - no unnecessary semicolons or braces
+# Step 4: style review (PEP 8).
+# snake_case names, spaces around operators, one statement per line,
+# no semicolons or braces.
 
 
 # ===================================================
@@ -66,11 +66,11 @@ Attraction data:
 # - Use conditional statements and guard clauses
 # - Preserve working Week 1 functionality
 #
-# TODO: Integrate new functions into your
-# existing ParkPulse application.
-#
 # The rule values below match the Business Rules
 # table in the Week 2 README.
+
+sky_loop_min_height = 48
+adult_base_price = 60.00
 
 
 # ---------------------------------------------------
@@ -95,14 +95,14 @@ def check_ride_eligibility(visitor_height, minimum_height):
           (exactly 48 inches on Sky Loop is eligible)
         - visitor_height < minimum_height -> False
         - either value is None, 0, or negative -> None
-
-    TODO:
-        1. Handle missing inputs.
-        2. Identify invalid values.
-        3. Apply the eligibility rule above.
-        4. Return the result.
     """
-    pass
+    if visitor_height is None or minimum_height is None:
+        return None
+    if visitor_height <= 0 or minimum_height <= 0:
+        return None
+    if visitor_height >= minimum_height:
+        return True
+    return False
 
 
 # ---------------------------------------------------
@@ -129,18 +129,18 @@ def calculate_ticket_price(ticket_type, base_price):
         - "senior" -> 75% of base_price   ($45.00)
         - any other ticket_type -> None
         - base_price is None, 0, or negative -> None
-
-    TODO:
-        1. Validate the provided inputs.
-        2. Identify the required pricing categories.
-        3. Apply the pricing rules above.
-        4. Return the calculated result.
-
-    Consider:
-        Would a guard clause help?
-        Would if/elif/else clarify the logic?
     """
-    pass
+    if base_price is None or base_price <= 0:
+        return None
+
+    if ticket_type == "adult":
+        return base_price
+    elif ticket_type == "child":
+        return base_price * 0.5
+    elif ticket_type == "senior":
+        return base_price * 0.75
+    else:
+        return None
 
 
 # ---------------------------------------------------
@@ -169,59 +169,63 @@ def check_capacity(current_riders, max_capacity):
         - utilization of 80% or more -> "near capacity"
           (Sky Loop at 20 of 24 riders = 83%)
         - otherwise -> "available"
-
-    TODO:
-        1. Review the Week 1 capacity calculations.
-        2. Decide which existing work can be reused.
-        3. Protect against invalid values.
-        4. Apply the capacity rules above.
-        5. Return the result.
-
-    Important:
-        Preserve your working Week 1 behavior.
     """
-    pass
+    if max_capacity is None or max_capacity <= 0:
+        return None
+    if current_riders is None or current_riders < 0:
+        return None
+    if current_riders > max_capacity:
+        return None
+
+    if current_riders == max_capacity:
+        return "full"
+    if calculate_utilization(current_riders, max_capacity) >= 0.8:
+        return "near capacity"
+    return "available"
 
 
 # ---------------------------------------------------
 # FEATURE 4: FUNCTION INTEGRATION
 # ---------------------------------------------------
 
-# TODO:
-# Identify where the existing ParkPulse application
-# should call each new function.
-#
-# Consider:
-# - What arguments should be passed?
-# - Where should returned values be stored?
-# - Which code displays results?
-# - Which functions can be reused?
-#
-# Do not duplicate your Week 1 entry point.
-# Do not add Week 3 interactive menus or loops.
+# Done: call each Week 2 function once for Sky Loop and
+# show the results under the Week 1 message.
+capacity_status = check_capacity(current_riders, max_capacity)
+adult_price = calculate_ticket_price("adult", adult_base_price)
+eligible_at_min = check_ride_eligibility(48, sky_loop_min_height)
+
+print(f"Capacity status: {capacity_status}")
+print(f"Adult ticket: ${adult_price:.2f}")
+print(f"Eligible at 48 inches: {eligible_at_min}")
 
 
 # ---------------------------------------------------
 # WEEK 2: EDGE-CASE NOTES
 # ---------------------------------------------------
 
-# TODO:
-# Predict what should happen when:
+# Done: predictions checked against the actual behavior.
 #
-# 1. A required input is None.
-# 2. A numeric input is negative.
-# 3. A capacity value is zero.
-# 4. A visitor is exactly at an eligibility boundary.
-# 5. An unrecognized ticket category is supplied.
-#
-# Compare predictions with actual behavior.
+# 1. A required input is None -> every rule function returns None.
+# 2. A numeric input is negative -> None
+#    (check_ride_eligibility(-3, 48), check_capacity(-1, 24)).
+# 3. A capacity value is zero -> check_capacity(5, 0) returns None
+#    with no ZeroDivisionError, because the guard runs before dividing.
+# 4. A visitor exactly at the boundary -> check_ride_eligibility(48, 48)
+#    returns True (>= includes 48).
+# 5. An unrecognized ticket category -> calculate_ticket_price("vip", 60.00)
+#    returns None.
 
 
 # ===================================================
 # PARKPULSE — WEEK 3: LOOPS, STRINGS & INPUT
 # ===================================================
 #
-# Keep all Week 1 and Week 2 code above.
+# Weeks 1 and 2 are filled in above, so this week
+# you only write Week 3 code. Reuse these names:
+#   ride_name, max_capacity, current_riders, is_open,
+#   sky_loop_min_height, adult_base_price
+#   calculate_utilization(), check_ride_eligibility(),
+#   calculate_ticket_price(), check_capacity()
 #
 # This week:
 # - Clean and validate user input

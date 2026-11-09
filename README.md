@@ -1,6 +1,6 @@
 # ParkPulse — Week 3: Loops, Strings & Interactive Input
 
-**Branch:** `Week_3` · **Project file:** `src/parkpulse.py` · **You need:** Week 2 finished on `main`
+**Branch:** `Week_3` · **Project file:** `src/parkpulse.py` · **You need:** a `Week_3` branch (Weeks 1–2 come filled in)
 
 ## Overview
 
@@ -13,7 +13,21 @@ ParkPulse helps amusement park staff check an attraction's capacity and status. 
 
 ## 1. Get the Week 3 starter
 
-**Already did this at the end of the Week 2 deck?** Skip to Section 2.
+The school's `src/parkpulse.py` has **Weeks 1–2 filled in**, so this week you only write Week 3 code.
+
+**Already on `Week_3` from the end of the Week 2 deck?** Get the updated starter, then skip to Section 2. This replaces your `src/parkpulse.py` with the school's file (do it before you start Week 3):
+```bash
+git switch Week_3
+git fetch upstream Week_3
+git restore --source upstream/Week_3 -- README.md src/parkpulse.py
+python3 src/parkpulse.py
+git add README.md src/parkpulse.py
+git commit -m "Week 3 starter with Weeks 1-2 filled in"
+git push origin Week_3
+```
+**You should see:** the Week 1–2 status lines (`Utilization: 83.33%`, `Capacity status: near capacity`) when you run it.
+
+**Starting fresh?** Follow steps 1–5.
 
 **1.** In your `parkpulse` folder (with `.venv` active), start from your up-to-date `main` and create your branch. Run each command by itself:
 ```bash
@@ -31,17 +45,13 @@ git fetch upstream Week_3
 ```
 **You should see:** a line ending in `Week_3 -> FETCH_HEAD` (or `upstream/Week_3`).
 
-**4.** Copy this README:
+**4.** Copy this README and the starter file (Weeks 1–2 filled in, Week 3 started for you):
 ```bash
-git restore --source upstream/Week_3 -- README.md
+git restore --source upstream/Week_3 -- README.md src/parkpulse.py
 ```
-**You should see:** no output.
+**You should see:** no output. `python3 src/parkpulse.py` prints the Week 1–2 status lines.
 
-**5.** Add the new starter code (don't restore the whole file; it would erase your Week 1–2 code). Print the school's file, copy from the `# ===` line above `# PARKPULSE — WEEK 3` to the end, and paste it at the end of your `src/parkpulse.py`:
-```bash
-git --no-pager show upstream/Week_3:src/parkpulse.py
-```
-**6.** Check, commit, and push:
+**5.** Check, commit, and push:
 ```bash
 git status
 ```
@@ -116,7 +126,7 @@ I'm testing a Python command-line menu. It accepts a menu choice from 1 to 5, a 
 
 ## 7. Checklist
 
-- [ ] I started `Week_3` from `main` and kept my Week 1–2 code.
+- [ ] I'm on `Week_3` with the school's starter (Weeks 1–2 filled in).
 - [ ] I did the readings and each Your turn slide in class.
 - [ ] Tasks A–D: input is validated, the menu repeats until Exit + Y, and the queue run and summary match.
 - [ ] Task E: no input crashes the program, and I tested the AI's hostile inputs.
